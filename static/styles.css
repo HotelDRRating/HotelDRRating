@@ -1,0 +1,16 @@
+#nav-login, #nav-register{
+    margin-left: 10px;	
+}
+#bt{
+	color: white;
+}
+#drp{
+	color: white;
+}
+#dropdownMenu1, #register-modal, #login-modal{
+	color: white;
+}
+#user{
+	text-decoration: none;
+	color: white;
+}
