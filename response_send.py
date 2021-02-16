@@ -1,8 +1,8 @@
 import smtplib,ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-sender_email = 'langw1460@gmail.com'
-password = 'lol1234xd'
+sender_email = 'langw1460@gmail.com'#obfuscate later
+password = 'lol1234xd'#obfuscate later
 def send_appreciation_email(email:str):
     if '@' not in email:
         raise Exception

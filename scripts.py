@@ -1,7 +1,4 @@
 import pymysql as psql
-class MissingArgsValueException(Exception):
-    def __init__(self,message="There is a NoneType object in the values passed"):
-        super().__init__(self.message)
 class hotelDB(object):
     __dbname = "hotelDRRating"
     def __init__(self):
@@ -25,7 +22,14 @@ class hotelDB(object):
             return False
         finally:
             conn.close()
-    def test(self):
-        raise MissingArgsValueException()
+    def update(self,where:str,hotel:str,fullname:str,email:str,password:str,conn=psql.connect(host='localhost',user='root',password='',database=__dbname)):
+        try:
+            with conn.cursor as cursor:
+                cursor.execute(f"UPDATE hotelInfo SET(_hotel='{hotel}',_fullname='{fullname}')")
+            return True
+        except:
+            return False
+        finally:
+            conn.close()
             
 a = hotelDB()
