@@ -2,7 +2,7 @@
 	margin-left: 20px;	
 }
 #bt{
-	color: white;
+	color: block;
 }
 #drp{
 	color: white;
@@ -13,4 +13,26 @@
 #user{
 	text-decoration: none;
 	color: white;
+}
+body{
+	background-image: url('static/images/bg.jpg');
+}
+#home{
+	color: white;
+}
+#line{
+	background-color: white;
+}
+#title{
+	background: none;
+}
+.home-btn{
+	margin-left: 25px;
+}
+#mark-title{
+	background-color: antiquewhite;
+}
+#titleHeader{
+	text-decoration: underline;
+	text-decoration-color: white;
 }

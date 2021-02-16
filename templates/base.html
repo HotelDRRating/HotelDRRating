@@ -10,37 +10,27 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/fonts.css')}}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/sidebar.css')}}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css')}}">
-<style>
-	#home{
-		color: white;
-	}
-	#line{
-		background-color: white;
-	}
-	#test{
-		width: 100%;
-		height: 100%;
-		background-color: turquoise;
-	}
-</style>
-<script src="{{ url_for('static',filename='js/events.js')}}"></script>
+<script src="{{ url_for('static',filename='js/event.js')}}"></script>
 <head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark sticky-top">
-		
-	<a href="#" id="home" class="side"><span class="fas fa-bars"></span></a>
-		
+    <nav class="navbar navbar-expand-sm sticky-top" id="nav">
+		<a href="#" id="home" class="side"><span class="fas fa-bars"></span></a>
 
 		<ul class="navbar-nav mr-auto">
+			
 			<li class="nav-item">
-				<div class="dropdown">
-  <a class="btn " id="home" href="/home">Home
-  </a>
-  
-</div>
+				<a class="btn home-btn" id="home" href="/home">Home
+				</a>
 
 			</li>
 		</ul>
+		<div id="mySidenav" class="sidenav">
+			<a href="#" class="closebtn">&times;</a>
+			<a href="#">About</a>
+			<a href="#">Services</a>
+			<a href="#">Clients</a>
+			<a href="#">Contact</a>
+			</div>
 		{% block content %}
 		{% endblock %}
 		
