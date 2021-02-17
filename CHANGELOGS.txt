@@ -1,0 +1,8 @@
+For any changes done in the repository please follow the format:
+[DATE]
+[WHAT WAS IMPLEMENTED]
+
+[February 17, 2021]
+- Implemented RSA Cryptographic Algorithm and store
+  the public key and private key in the database with a determinant of
+  what public or private key that is for.

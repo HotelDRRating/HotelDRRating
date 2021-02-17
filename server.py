@@ -29,6 +29,8 @@ def register_user_hotel():
         fname = request.form.get('fullname')
         email = request.form.get('email')
         passw = request.form.get('password')
+        x = crypto()
+        x.generate(user=email)
     return redirect('/main',code=302)
 @app.route('/login-auth', methods=["GET","POST"])
 def login_auth():

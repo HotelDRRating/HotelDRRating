@@ -1,5 +1,4 @@
-import pymysql as psql
-import smtplib,ssl
+import pymysql as psql,smtplib,ssl,rsa
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 class hotelDB(object):
@@ -64,9 +63,46 @@ class hotelDB(object):
             return False
         finally:
             conn.close()
+class crypto(object):
+    __dbname = "hotelDRRating"
+    def __init__(self,conn=psql.connect(host='localhost',user='root',password='',database=__dbname)):
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute("CREATE TABLE IF NOT EXISTS `rsakeys` ( `_id` INT NOT NULL AUTO_INCREMENT , `_pubkey` VARCHAR(2000) NOT NULL , `_privkey` VARCHAR(2000) NOT NULL , `_email` TEXT NOT NULL , PRIMARY KEY (`id`))")
+                conn.commit()
+        finally:
+            conn.close()
+    def generate(self,user:str,keysize=2048,conn=psql.connect(host='localhost',user='root',password='',database=__dbname)):
+        (self.pubkey, self.privkey) = rsa.newkeys(nbits=keysize)
+        self.publickey = str(self.pubkey)
+        self.privatekey = str(self.privkey)
+        try:
+            sql = f"INSERT INTO `rsakeys`(_pubkey,_privkey,_user) VALUES('{self.pubkey}','{self.privkey}','{user}')"
+            with conn.cursor() as cursor:
+                cursor.execute(sql)
+                conn.commit()
+        finally:
+            conn.close()
+    def get_keys(self, email:str,conn=psql.connect(host='localhost',user='root',password='',database=__dbname)):
+        try:
+            sql = f"SELECT FROM rsakeys WHERE _email = '{email}'"
+            with conn.cursor() as cursor:
+                cursor.execute(sql)
+                row = cursor.fetchone()
+                return {"public" : row[1], "private" : row[2]}
+        finally:
+            conn.close()
+    def encrypt(self,hotel:str,fullname:str,email:str,password:str):
+        
+        self.pubkey = self.get_keys(email=email)["public"]
+        nhotel = hotel.encode('utf-8')
+        nfullname = fullname.encode('utf-8')
+        nemail = email.encode('utf-8')
+        npassword = password.encode('utf-8')
+        #return (rsa.encrypt(nemail,self.pubkey),rsa.encrypt(nhotel,self.pubkey),rsa.encrypt(nemail,self.pubkey),rsa.encrypt(npassword,self.pubkey))
 class emailing(object):
-    sender_email = 'langw1460@gmail.com'#change and obfuscate later
-    password = 'lol1234xd'#change and obfuscate later
+    sender_email = 'V!6ga2$r6?Jf$8Ye¥oI1@73EG?o@kl7?yOp#¢5Bt$8YeB6$&a2$rr!0XV!6gp0t$Yo!fu$t!B6$&'#change and obfuscate later
+    password = 'V!6gu$t!V!6g@73E8?Ty£tOyG?o@Pk&*q8u?'#change and obfuscate later
     def __init__(self):
         return
     def send_thank_you(self,email:str):
@@ -84,7 +120,7 @@ class emailing(object):
         message["From"] = self.sender_email
         message["To"] = email
         msg = f"""\
-            Thank you {sender} for reaching out to us we will get back to you within 24 hours
+            Thank you {sender} for reaching out to us our support team will get back to you within 24 hours
 
             Regards.
             The Disaster Resilience Rating For Hotels            
