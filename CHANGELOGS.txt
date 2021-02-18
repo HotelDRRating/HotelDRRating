@@ -6,3 +6,6 @@ For any changes done in the repository please follow the format:
 - Implemented RSA Cryptographic Algorithm and store
   the public key and private key in the database with a determinant of
   what public or private key that is for.
+
+  [February 18, 2021]
+  - Improved base.html and a bit of code decluttering on server.py

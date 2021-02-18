@@ -14,9 +14,6 @@
 	text-decoration: none;
 	color: white;
 }
-body{
-	background-image: url('static/images/bg.jpg');
-}
 #home{
 	color: white;
 }
@@ -29,10 +26,7 @@ body{
 .home-btn{
 	margin-left: 25px;
 }
-#mark-title{
-	background-color: antiquewhite;
-}
 #titleHeader{
-	text-decoration: underline;
-	text-decoration-color: white;
+	color: white;
+	background: rgba(250,235,215, 0.5);
 }

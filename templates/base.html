@@ -12,25 +12,75 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css')}}">
 <script src="{{ url_for('static',filename='js/event.js')}}"></script>
 <head>
-<body>
+	<style>
+		body{
+			background-image: url("{{ url_for('static',filename='images/bg.jpg')}}");
+		}
+	</style>
+	<body>
     <nav class="navbar navbar-expand-sm sticky-top" id="nav">
 		<a href="#" id="home" class="side"><span class="fas fa-bars"></span></a>
 
 		<ul class="navbar-nav mr-auto">
 			
 			<li class="nav-item">
-				<a class="btn home-btn" id="home" href="/home">Home
-				</a>
-
+				{% if isloggedin == 0 -%}
+				<a class="btn home-btn" id="home" href="{{ url_for('home',content='home')}}">Home</a>
+				{% else -%}
+				<a class="btn home-btn" id="home" href="{{ url_for('home',content='home',isloggedin=1,username='{{username}}')}}">Home</a>
+				{%endif -%}
 			</li>
 		</ul>
+		{% if isloggedin == 0 %}
+<ul class='navbar-nav ml-auto'>
+    <li class='nav-item' id='nav-register' style='margin-right: 1em;'>
+        <a class="btn" id="register-modal" >Register</a>
+    </li>
+    <li class='nav-item' id='nav-login'>
+        <a class='btn' id='login-modal'>
+            Login
+        </a>
+    </li>
+</ul>
+</nav>
+{% else %}
+<ul class='navbar-nav ml-auto'>
+    <li class="nav-item">
+        <button type="button" class="btn" id="home">Hello {{username}}</button>
+    </li>
+</ul>
+
+</nav>
+{% endif %}
 		<div id="mySidenav" class="sidenav">
 			<a href="#" class="closebtn">&times;</a>
-			<a href="#">About</a>
-			<a href="#">Services</a>
-			<a href="#">Clients</a>
-			<a href="#">Contact</a>
+			<div id="hotelItems">
+			{% if isloggedin == 0 -%}
+			<a href="{{ url_for('home',content='about_us')}}" >About us</a>
+			{% else-%}
+			<a href="{{ url_for('home',content='about_us',isloggedin=1,username='{{username}}')}}" >About us</a>
+			{% endif-%}
+			</div>		
 			</div>
+			
+			{% block test %}
+		{% endblock %}
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row" id="row">
+					<div class="col">
+						<center><h1 class="display-4" id="titleHeader">The Disaster Resilience Rating For Hotels</h1>
+							
+						</center>
+					</div>
+				</div>
+				<div class="row" id="row">
+					<div class="col" >
+						<center><h4 id="titleHeader">Because RESILIENCE is everybody's business.</h4></center>
+					</div>
+				</div>
+			</div>
+		</div>
 		{% block content %}
 		{% endblock %}
 		
