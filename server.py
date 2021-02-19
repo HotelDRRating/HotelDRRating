@@ -26,24 +26,32 @@ def home():
             if x == '@':
                 break
             xx.append(x)
-        return redirect(url_for('/home/success',page_content=content,username="".join(xx),isloggedin=1))
+        return redirect(url_for('home/success',page_content=content,username="".join(xx),isloggedin=1))
     return render_template('main.html',page_content=content,isloggedin=0),200
 @app.route('/home/success')
 def success():
-    page_content = request.args.get('page_content')
+    page_content = request.args.get('page_content') 
     username = request.args.get('username')
     return render_template('main-login-success.html',page_content=page_content,username=username)
-'''
-@app.route('/register_user_hotel', methods=["GET","POST"])
-def register_user_hotel():
+@app.route('/home/logout',methods=['POST','GET'])
+def logout():
+    content = request.args.get('content')
+    return redirect(url_for('home',content=content))
+@app.route('/register', methods=["GET","POST"])
+def register():
     if request.method == "POST":
+        content = request.args.get('content')
         hotel = request.form.get('hotel')   
         fname = request.form.get('fullname')
         email = request.form.get('email')
         passw = request.form.get('password')
-        x = crypto()
-        x.generate(user=email)
-    return redirect('/main',code=302)
+        x = binary()
+        data = x.convert_to_binary(hotel,fname,email,passw)
+        q = hotelDB()
+        q.insert(data["hotel"],data["fullname"],data["email"],data["password"])
+    #returns to the page they were currently viewing
+    return redirect(url_for('home',content=content),code=302)
+'''
 @app.route('/login-auth', methods=["GET","POST"])
 def login_auth():
     if request.method == "POST":
@@ -54,4 +62,4 @@ def login_auth():
             return redirect('/main')
 '''
 if __name__ == '__main__':
-    app.run(debug=True,port=8080)
+    app.run(debug=True)

@@ -63,43 +63,30 @@ class hotelDB(object):
             return False
         finally:
             conn.close()
-class crypto(object):
-    __dbname = "hotelDRRating"
-    def __init__(self,conn=psql.connect(host='localhost',user='root',password='',database=__dbname)):
-        try:
-            with conn.cursor() as cursor:
-                cursor.execute("CREATE TABLE IF NOT EXISTS `rsakeys` ( `_id` INT NOT NULL AUTO_INCREMENT , `_pubkey` VARCHAR(2000) NOT NULL , `_privkey` VARCHAR(2000) NOT NULL , `_email` TEXT NOT NULL , PRIMARY KEY (`id`))")
-                conn.commit()
-        finally:
-            conn.close()
-    def generate(self,user:str,keysize=2048,conn=psql.connect(host='localhost',user='root',password='',database=__dbname)):
-        (self.pubkey, self.privkey) = rsa.newkeys(nbits=keysize)
-        self.publickey = str(self.pubkey)
-        self.privatekey = str(self.privkey)
-        try:
-            sql = f"INSERT INTO `rsakeys`(_pubkey,_privkey,_user) VALUES('{self.pubkey}','{self.privkey}','{user}')"
-            with conn.cursor() as cursor:
-                cursor.execute(sql)
-                conn.commit()
-        finally:
-            conn.close()
-    def get_keys(self, email:str,conn=psql.connect(host='localhost',user='root',password='',database=__dbname)):
-        try:
-            sql = f"SELECT FROM rsakeys WHERE _email = '{email}'"
-            with conn.cursor() as cursor:
-                cursor.execute(sql)
-                row = cursor.fetchone()
-                return {"public" : row[1], "private" : row[2]}
-        finally:
-            conn.close()
-    def encrypt(self,hotel:str,fullname:str,email:str,password:str):
+class binary(object):
+    def __init__(self):
+        return
+    def convert_to_binary(self,hotel:str,fullname:str,email:str,password:str):
+        self.hotel_binary = []
+        self.fullname_binary = []
+        self.email_binary = []
+        self.password_binary = []
+        for byte in hotel.encode('utf8'):
+            self.hotel_binary.append(bin(byte))
+        for byte in fullname.encode('utf8'):
+            self.fullname_binary.append(bin(byte))
+        for byte in email.encode('utf8'):
+            self.email_binary.append(bin(byte))
+        for byte in password.encode('utf8'):
+            self.password_binary.append(bin(byte))
         
-        self.pubkey = self.get_keys(email=email)["public"]
-        nhotel = hotel.encode('utf-8')
-        nfullname = fullname.encode('utf-8')
-        nemail = email.encode('utf-8')
-        npassword = password.encode('utf-8')
-        #return (rsa.encrypt(nemail,self.pubkey),rsa.encrypt(nhotel,self.pubkey),rsa.encrypt(nemail,self.pubkey),rsa.encrypt(npassword,self.pubkey))
+        return {"hotel":" ".join(self.hotel_binary),"fullname":" ".join(self.fullname_binary),"email":" ".join(self.email_binary),"password": " ".join(self.password_binary)}
+    def convert_to_string(self,hotel:str,fullname:str,email:str,password:str):
+        a = hotel.split(" ")
+        b = fullname.split(" ")
+        c = email.split(" ")
+        d = password.split(" ") 
+        return {"hotel":"".join([chr(int(q,2)) for q in a]), "fullname":"".join([chr(int(q, 2)) for q in b]), "email":"".join([chr(int(q,2)) for q in c]), "password":"".join([chr(int(q,2)) for q in d])}
 class emailing(object):
     sender_email = 'V!6ga2$r6?Jf$8Ye¥oI1@73EG?o@kl7?yOp#¢5Bt$8YeB6$&a2$rr!0XV!6gp0t$Yo!fu$t!B6$&'#change and obfuscate later
     password = 'V!6gu$t!V!6g@73E8?Ty£tOyG?o@Pk&*q8u?'#change and obfuscate later

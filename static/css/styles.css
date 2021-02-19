@@ -8,7 +8,7 @@
 	color: white;
 }
 #dropdownMenu1, #register-modal, #login-modal{
-	color: white;
+	color: brown;
 }
 #user{
 	text-decoration: none;
@@ -27,6 +27,6 @@
 	margin-left: 25px;
 }
 #titleHeader{
-	color: white;
+	color: brown;
 	background: rgba(250,235,215, 0.5);
 }

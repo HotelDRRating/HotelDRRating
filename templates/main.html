@@ -20,7 +20,7 @@
 </ul>
 <ul class='navbar-nav ml-auto'>
     <li class='nav-item' id='nav-register' style='margin-right: 1em;'>
-        <a class="btn" id="register-modal" >Register</a>
+        <a class="btn" id="register-modal"data-toggle="modal" data-target="#registerModal" href="#">Register</a>
     </li>
     <li class='nav-item' id='nav-login'>
         <a class='btn' id='login-modal'>
@@ -33,12 +33,19 @@
 {% endblock %}
 {% block content %}
 {% if page_content=="home" -%}
+Home
 {% elif page_content=="about_us" -%}
+About us
 {% elif page_content=="contact_us" -%}
+Contact us
 {% elif page_content=="framework" -%}
+Framework
 {% elif page_content=="partners" -%}
+Partners
 {% elif page_content=="faq" -%}
+Faq
 {% elif page_content=="rated_hotels" -%}
+Rated hotels
 {% else -%}
     <h1 class="display-4">404 Content not found</h1>
 {% endif -%}
