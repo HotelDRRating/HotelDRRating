@@ -12,18 +12,27 @@ def send_appreciation(test):
     return redirect('/contact_us')
 @app.route('/',methods=["GET","POST"])
 def index():
-    return redirect(url_for('home',content="home",isloggedin=0))
+    return redirect(url_for('home',content="home"))
 @app.route('/home',methods=["GET","POST"])
 def home():
     #0 if the user is not logged in
     #1 if the user is logged in
     content = request.args.get('content')
-    isloggedin = request.args.get('isloggedin')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    if email is not None and password is not None:
+        xx = []
+        for x in list(email):
+            if x == '@':
+                break
+            xx.append(x)
+        return redirect(url_for('/home/success',page_content=content,username="".join(xx),isloggedin=1))
+    return render_template('main.html',page_content=content,isloggedin=0),200
+@app.route('/home/success')
+def success():
+    page_content = request.args.get('page_content')
     username = request.args.get('username')
-    return render_template('main.html',page_content=content,isloggedin=isloggedin,username=username),200
-@app.route('/register',methods=["GET","POST"])
-def register():
-    hotel = request.args
+    return render_template('main-login-success.html',page_content=page_content,username=username)
 '''
 @app.route('/register_user_hotel', methods=["GET","POST"])
 def register_user_hotel():
@@ -45,4 +54,4 @@ def login_auth():
             return redirect('/main')
 '''
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=8080)

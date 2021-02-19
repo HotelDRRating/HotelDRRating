@@ -1,15 +1,45 @@
 {%extends 'base.html'%}
 {% block title %}
-The Disaster Resilience Rating For Hotels - Home
-{% endblock %}
-{%block test %}
+{% if page_content=="home" -%}
+    <title>The Disaster Resilience Rating For Hotels - Home</title>
+{% elif page_content=="about_us" -%}
+    <title>The Disaster Resilience Rating For Hotels - About Us</title>
+{% elif page_content=="contact_us" -%}
+    <title>The Disaster Resilience Rating For Hotels - Contact Us</title>
+{% elif page_content=="framework" -%}
+    <title>The Disaster Resilience Rating For Hotels - Our Framework</title>
+{% elif page_content=="partners" -%}
+    <title>The Disaster Resilience Rating For Hotels - Partners</title>
+{% elif page_content=="faq" -%}
+    <title>The Disaster Resilience Rating For Hotels - FAQ</title>
+{% elif page_content=="rated_hotels" -%}
+    <title>The Disaster Resilience Rating For Hotels - Rated Hotels</title>
+{% endif -%}
+{%endblock%}
+{% block nav %}
+</ul>
+<ul class='navbar-nav ml-auto'>
+    <li class='nav-item' id='nav-register' style='margin-right: 1em;'>
+        <a class="btn" id="register-modal" >Register</a>
+    </li>
+    <li class='nav-item' id='nav-login'>
+        <a class='btn' id='login-modal'>
+            Login
+        </a>
+    </li>
+</ul>
 
+</nav>
 {% endblock %}
 {% block content %}
-    {% if page_content == "home" -%}
-    <h1>HOME</h1>
-    {% elif page_content == "about_us"-%}
-    <h1>About us</h1>
-    {%endif%}
-    
+{% if page_content=="home" -%}
+{% elif page_content=="about_us" -%}
+{% elif page_content=="contact_us" -%}
+{% elif page_content=="framework" -%}
+{% elif page_content=="partners" -%}
+{% elif page_content=="faq" -%}
+{% elif page_content=="rated_hotels" -%}
+{% else -%}
+    <h1 class="display-4">404 Content not found</h1>
+{% endif -%}
 {% endblock %}

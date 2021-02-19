@@ -1,12 +1,11 @@
 <html>
 <head>
-<title id="titleID"> {% block title %} {% endblock %}</title>
+{% block title %} {% endblock %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://connect.facebook.net/en_US/sdk.js"></script>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/fonts.css')}}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/sidebar.css')}}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css')}}">
@@ -18,54 +17,24 @@
 		}
 	</style>
 	<body>
-    <nav class="navbar navbar-expand-sm sticky-top" id="nav">
-		<a href="#" id="home" class="side"><span class="fas fa-bars"></span></a>
-
+		
+	
+	<nav class="navbar navbar-expand-sm sticky-top" id="nav">
+		<a href="javascript:void(0)" id="home" class="side"><span class="fas fa-bars"></span></a>
 		<ul class="navbar-nav mr-auto">
-			
 			<li class="nav-item">
 				{% if isloggedin == 0 -%}
 				<a class="btn home-btn" id="home" href="{{ url_for('home',content='home')}}">Home</a>
 				{% else -%}
-				<a class="btn home-btn" id="home" href="{{ url_for('home',content='home',isloggedin=1,username='{{username}}')}}">Home</a>
-				{%endif -%}
+				{% endif -%}
+			   
 			</li>
 		</ul>
-		{% if isloggedin == 0 %}
-<ul class='navbar-nav ml-auto'>
-    <li class='nav-item' id='nav-register' style='margin-right: 1em;'>
-        <a class="btn" id="register-modal" >Register</a>
-    </li>
-    <li class='nav-item' id='nav-login'>
-        <a class='btn' id='login-modal'>
-            Login
-        </a>
-    </li>
-</ul>
-</nav>
-{% else %}
-<ul class='navbar-nav ml-auto'>
-    <li class="nav-item">
-        <button type="button" class="btn" id="home">Hello {{username}}</button>
-    </li>
-</ul>
-
-</nav>
-{% endif %}
-		<div id="mySidenav" class="sidenav">
-			<a href="#" class="closebtn">&times;</a>
-			<div id="hotelItems">
-			{% if isloggedin == 0 -%}
-			<a href="{{ url_for('home',content='about_us')}}" >About us</a>
-			{% else-%}
-			<a href="{{ url_for('home',content='about_us',isloggedin=1,username='{{username}}')}}" >About us</a>
-			{% endif-%}
-			</div>		
-			</div>
-			
-			{% block test %}
+		{%block nav%}
+		
 		{% endblock %}
 		<div class="container-fluid">
+			
 			<div class="container">
 				<div class="row" id="row">
 					<div class="col">
@@ -80,6 +49,17 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div id="mySidenav" class="sidenav">
+			<a href="#" class="closebtn">&times;</a>
+			<div id="hotelItems">
+				{% if isloggedin == 0 -%}
+				<br><br><br><br><br><br><br><br><br>
+				<a href="{{ url_for('home',content='about_us')}}" ><i class="fas fa-info"></i>About Us</a>
+				<a href="{{ url_for('home',content='contact_us')}}"><i class="fas fa-id-card-alt"></i>Contact Us</a>
+				{% else -%}
+				{% endif -%}
+			</div>		
 		</div>
 		{% block content %}
 		{% endblock %}

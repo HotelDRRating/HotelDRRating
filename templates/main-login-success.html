@@ -2,27 +2,22 @@
 {% block title %}
 The Disaster Resilience Rating For Hotels - Home
 {% endblock %}
-{% block content %}
+{% block nav %}
 <ul class='navbar-nav ml-auto'>
-    <li class="nav-item">
-        <button type="button" class="btn" id="home">Hello {{username}}</button>
+    <li class='nav-item' id='nav-register' style='margin-right: 1em;'>
+        <a class="btn" href="#">Hello {{username}}</a>
     </li>
 </ul>
-
-</nav>
-
-<div class="container-fluid"	id="test">
-    <div class="row align-content-center">
-        <div class="col col-md-4 bg-danger">
-            <h1 class="display-4">The Disaster Resilience Rating For Hotels</h1>
-        </div>
-        <div class="col col-md-4">
-            <hr class="m-4">
-        </div>
-        <div class="col col-sm-12">
-            
-        </div>
-    </div>
-
-</div>
+{% endblock %}
+{% block content %}
+{% if page_content=="home" -%}
+{% elif page_content=="about_us" -%}
+{% elif page_content=="contact_us" -%}
+{% elif page_content=="framework" -%}
+{% elif page_content=="partners" -%}
+{% elif page_content=="faq" -%}
+{% elif page_content=="rated_hotels" -%}
+{% else -%}
+    <h1 class="display-4">404 Content not found</h1>
+{% endif -%}
 {% endblock %}
