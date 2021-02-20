@@ -18,49 +18,34 @@
 		.btn{
 			width: auto;
 		}
-		#hotelitems a{
+		.sidenav a{
 			width: 400px;
 			margin-top: 20px;
 			text-decoration:none;
 			font-size: 22px;
 			color: brown;
 		}
+		.sidenav .fas{
+			color: brown;
+		}
+		.sidenav a:hover{
+			border: 1px solid;
+			border-color: black;
+
+		}
 	</style>
 	<body>
-		
-	
 	<nav class="navbar navbar-expand-sm sticky-top" id="nav">
-		
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				{% if isloggedin == 0 -%}
-				<a class="btn home-btn" id="home" href="{{ url_for('home',content='home')}}">Home</a>
-				{% else -%}
-				{% endif -%}
-			   
+				{% block home %}
+			   {% endblock %}
 			</li>
 		</ul>
-		{%block nav%}
+		{%block nav%} {% endblock %}
 		
-		{% endblock %}
-		<div class="sidenav">
-			<br><br><br><br><br><br><br><br><br>
-			<div id="hotelItems">
-				{% if isloggedin == 0 -%}
-				<a href="{{ url_for('home',content='about_us')}}" ><i class="fas fa-info btn"></i>&nbsp;&nbsp;&nbsp; About Us</a>
-				<br>
-				<a href="{{ url_for('home',content='contact_us')}}"><i class="fas fa-id-card-alt btn"></i> Contact Us</a>
-				<br>
-				<a href="{{ url_for('home',content='framework')}}"><i class="fas fa-cogs btn"></i> Framework</a>
-				<br>
-				<a href="{{ url_for('home',content='partners')}}">&nbsp;&nbsp;<i class="fa fa-handshake" ></i> Partners</a>
-				{% else -%}
-				{% endif -%}
-			</div>		
-		</div>
 		<div class="container-fluid" >
-			
-			<div class="container">
+						<div class="container">
 				<div class="row" id="row">
 					<div class="col">
 						<center><h1 class="display-4" id="titleHeader">The Disaster Resilience Rating For Hotels</h1>
@@ -74,42 +59,23 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
+
+			<div class="container"><!-- content -->
 			{% block content %}
 			{% endblock %}
 		</div>
 		</div>
-		
+		<div class="sidenav ">
+			{%block sidebar%}{%endblock %}
+		</div>
 		
 		
 		<!--
 			MODALS
 		-->
-		<div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="ModalRegister" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="modtitle">Registration Form</h5>
-						<button type="button" class="close" data-dismiss="registerModal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form action="{{url_for('register',content='{{[page_content]}}')}}" method="post">
-							<input type="text" class="form-control" name="hotel">
-							<input type="text" class="form-control" name="fullname">
-							<input type="email" class="form-control" name="email">
-							<input type="password" class="form-control" name="password">
-							<button type="submit" class="btn btn-primary ml-auto">Submit</button>
-						</form>
-						
-					</div>
-					<div class="modal-footer">
-					</div>
-						<h5>Already have an account? Click<a href="#" id="showLogin">here</a> to login</h5>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 </body>
+{% block modals %}
+
+{% endblock %}
 </html>

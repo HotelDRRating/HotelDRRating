@@ -39,18 +39,35 @@ def logout():
     return redirect(url_for('home',content=content))
 @app.route('/register', methods=["GET","POST"])
 def register():
-    if request.method == "POST":
-        content = request.args.get('content')
-        hotel = request.form.get('hotel')   
-        fname = request.form.get('fullname')
-        email = request.form.get('email')
-        passw = request.form.get('password')
-        x = binary()
-        data = x.convert_to_binary(hotel,fname,email,passw)
-        q = hotelDB()
-        q.insert(data["hotel"],data["fullname"],data["email"],data["password"])
+    content = request.args.get('content')
+    hotel = request.form.get('hotel')   
+    fname = request.form.get('fullname')
+    email = request.form.get('email')
+    passw = request.form.get('password')
+    if content == None and hotel == None and fname == None and email == None and passw == None:
+        return "<h1>INVALID ACCESS!</h1>"
+    x = binary()
+    data = x.convert_to_binary(hotel,fname,email,passw)
+    q = hotelDB()
+    q.insert(data["hotel"],data["fullname"],data["email"],data["password"])
     #returns to the page they were currently viewing
     return redirect(url_for('home',content=content),code=302)
+@app.route('/login', methods=["GET","POST"])
+def login():
+    
+    content = request.args.get('content')
+    email = request.form.get('email')
+    passw = request.form.get('password')
+    if content == None and email == None and passw == None:
+        return "<h1>INVALID ACCESS!</h1>"
+    x = binary()
+    data = x.convert_to_binary("","",email,passw)
+    hotel = hotelDB()
+    if hotel.login_auth(email = data["email"],password=data["password"]):
+        return redirect(url_for('home/success',content=content))
+    else:
+        return "<h1> LOGIN FAILED </H1>"
+
 '''
 @app.route('/login-auth', methods=["GET","POST"])
 def login_auth():

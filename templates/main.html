@@ -16,14 +16,17 @@
     <title>The Disaster Resilience Rating For Hotels - Rated Hotels</title>
 {% endif -%}
 {%endblock%}
+{% block home %}
+<a class="btn home-btn" id="home" href="{{ url_for('home',content='home')}}"><i class="fas fa-home"></i> Home</a>
+{% endblock %}
 {% block nav %}
 </ul>
 <ul class='navbar-nav ml-auto'>
     <li class='nav-item' id='nav-register' style='margin-right: 1em;'>
-        <a class="btn" id="register-modal"data-toggle="modal" data-target="#registerModal" href="#">Register</a>
+        <a class="btn" id="register-modal" data-toggle="modal" data-target="#registerModal" href="#">Register</a>
     </li>
     <li class='nav-item' id='nav-login'>
-        <a class='btn' id='login-modal'>
+        <a class='btn' id='login-modal' data-toggle="modal" data-target="#loginModal" href="#">
             Login
         </a>
     </li>
@@ -44,9 +47,83 @@ Framework
 Partners
 {% elif page_content=="faq" -%}
 Faq
+{% elif page_content=="assessment" -%}
+Assessment
 {% elif page_content=="rated_hotels" -%}
 Rated hotels
 {% else -%}
     <h1 class="display-4">404 Content not found</h1>
 {% endif -%}
+{% endblock %}
+{% block modals %}
+<div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="ModalRegister" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modtitle">Registration Form</h5>
+				
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<form action="{{url_for('register',content='{{page_content}}')}}" method="post">
+						<label for="hotel">Hotel</label>
+						<input type="text" class="form-control" id="hotel" placeholder="Enter the name of your hotel" name="hotel">
+						<label for="fullname">Full Name</label>
+						<input type="text" class="form-control" id="fullname" placeholder="Enter your fullname" name="fullname">
+						<label for="email">Email</label>
+						<input type="email" class="form-control" id="email" placeholder="Enter your email address" name="email">
+						<label for="password">Password</label>
+						<input type="password" class="form-control" id="password" placeholder="Enter your password" name="password">
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+					        <button type="submit" class="btn btn-primary ">Submit</button>
+						<center><h5>Already have an account? Click <a href="#" id="showLogin" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">here</a> to login</h5></center>
+					</div>
+					</form>
+				</div>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+<div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="ModalLogin">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+                <h5 class="modal-title">Login Form</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <form action="{{url_for('login',content='{{page_content}}')}}" method="post"> 
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary">Login</button>
+                            <center><h5>Don't have an account yet? Click <a href="#" id="showLogin" data-toggle="modal" data-target="#registerModal" data-dismiss="modal">here</a> to create an account</h5></center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{%block sidebar %}
+<a href="{{ url_for('home',content='about_us')}}" ><i class="fas fa-info btn"></i>&nbsp;&nbsp;&nbsp; About Us</a>
+<br><br>
+<a href="{{ url_for('home',content='contact_us')}}"><i class="fas fa-id-card-alt btn"></i> Contact Us</a>
+<br><br>
+<a href="{{ url_for('home',content='framework')}}"><i class="fas fa-cogs btn"></i> Framework</a>
+<br><br>
+<a href="{{ url_for('home',content='partners')}}">&nbsp;<i class="fa fa-handshake" ></i>&nbsp;&nbsp; Partners</a>
+<br><br>
+<a href="{{ url_for('home',content='assessment')}}">&nbsp;<i class="fas fa-check"></i>&nbsp;&nbsp; Assessment</a>
+<br><br>
+<a href="{{ url_for('home',content='rated_hotels')}}">&nbsp;<i class="fa fa-star"></i>&nbsp;&nbsp;Rated Hotels</a>
+<br><br>
+<a href="{{ url_for('home',content='faq')}}">&nbsp;<i class="fas fa-question"></i>&nbsp;&nbsp;&nbsp;FAQ</a>
+
 {% endblock %}

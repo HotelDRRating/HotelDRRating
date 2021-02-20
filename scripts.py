@@ -1,4 +1,4 @@
-import pymysql as psql,smtplib,ssl,rsa
+import pymysql as psql,smtplib,ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 class hotelDB(object):
