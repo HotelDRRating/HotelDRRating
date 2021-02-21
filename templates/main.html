@@ -4,13 +4,6 @@
     <title>The Disaster Resilience Rating For Hotels - Home</title>
 {% elif page_content=="about_us" -%}
     <title>The Disaster Resilience Rating For Hotels - About Us</title>
-This COVID-19 pandemic is a phenomenal occasion that has prompted gigantic joblessness and financial slumps everywhere on the world. The inn area, which is profoundly reliant on vacationers and explorers, has been seriously influenced. Since limitations are gradually being lifted and some similarity to regularity is starting to returned, what should lodging proprietors and the board do to win back visitors while additionally planning for the following worldwide calamity? How would hotels be able to deal with become more debacle strong? it explicitly intended to empower the facilities business to skip back better after each catastrophe. 
-
-How can it work? 
-
-The DRRH profits by the fundamental need of lodgings to elevate and showcase itself to forthcoming visitors. It considers lodgings to advertise their properties, offices and administrations from an alternate point of view — its capacity to ricochet back better from catastrophes and emergencies. 
-
-Following the structure, the rating investigates an inn's arrangements, programs, apparatuses, frameworks, and trainings that will permit it to forestall, relieve, plan for, and react to catastrophes.
 {% elif page_content=="contact_us" -%}
     <title>The Disaster Resilience Rating For Hotels - Contact Us</title>
 {% elif page_content=="framework" -%}
@@ -23,9 +16,6 @@ Following the structure, the rating investigates an inn's arrangements, programs
     <title>The Disaster Resilience Rating For Hotels - Rated Hotels</title>
 {% endif -%}
 {%endblock%}
-{% block home %}
-<a class="btn home-btn" id="home" href="{{ url_for('home',content='home')}}"><i class="fas fa-home"></i> Home</a>
-{% endblock %}
 {% block nav %}
 </ul>
 <ul class='navbar-nav ml-auto'>
@@ -43,10 +33,129 @@ Following the structure, the rating investigates an inn's arrangements, programs
 {% endblock %}
 {% block content %}
 {% if page_content=="home" -%}
-Home
+<div class="row" id="titleHeader">
+    <div class="col">
+        <h1  ><center>WE LIVE IN A VUCA WORLD</center></h2>
+        <div class="row">
+            <p><i class="fas fa-circle">&nbsp;</i>Where disasters are waiting around the corner.</p>
+        </div>
+        <div class="row">
+            <p><i class="fas fa-circle">&nbsp;</i>We need to make sure our instituitions are resilient</p>
+        </div>
+        <div class="row">
+            <p>And it begins with knowing where we stand? Is your hotel resilient? Click <a href="javascript:void(0)" data-toggle="modal" data-target="#framework-show">here</a> to see how our framework works</p>
+        </div>
+    </div>
+</div>
+<div class="row" id="titleHeader">
+    <div class="col">
+        <h2><center>WHY GET YOUR HOTEL RATED?</center></h2>
+        <div class="carousel slide carousel-fade" id="rated" data-ride="carousel">
+    
+            <div class="carousel-inner" role="listbox">
+                <center>
+                <div class="carousel-item active">
+                    <img src="{{ url_for('static',filename='images/assessment.jpg') }}" id="image" >
+                    <p style="color: black">To help you assess your resilience. Find out where you stand.</p>        
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static',filename='images/protect.jpg')}}" id="image">
+                    <p style="color: black">To help you protect your stakeholders. Because your success depends on them</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static',filename='images/build.jpg')}}" id="image">
+                    <p style="color: black">To help build the industry Because when you are resilient, you help the industry become more resilient.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static',filename='images/future.jpg')}}" id="image">
+                    <p style="color: black">Because the country needs you to be resilient. The whole country benefits from you moving towards a more resilient future</p>
+                </div>
+                </center>
+            </div>
+            <ul class="carousel-indicators">
+                <li class="active" data-slide-to="0" data-target="#rated"></li>
+                <li data-slide-to="1" data-target="#rated"></li>
+                <li data-slide-to="2" data-target="#rated"></li>
+                <li data-slide-to="3" data-target="#rated"></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" id="titleHeader">
+    <div class="col">
+        <h2><center>The Process of Rating Hotels</center></h2>
+    </div>
+    
+</div>
+<div class="row" id="titleHeader">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Step 1</h4>
+            <p class="card-text">Self Assessment</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Step 2</h4>
+            <p class="card-text">Third Party Resilience Audit</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Step 3</h4>
+            <p class="card-text">Industry Association<br> Validation and Approval</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Step 4</h4>
+            <p class="card-text">Publication of Rating</p>
+        </div>
+    </div>
+</div>
+
+
 {% elif page_content=="about_us" -%}
+<center><div id="header-head"><h1 class="display-4">About Us</h1></div></center>
+<div class="content">
+This COVID-19 pandemic is a phenomenal occasion that has prompted gigantic joblessness and financial slumps everywhere on the world. The inn area, which is profoundly reliant on vacationers and explorers, has been seriously influenced. Since limitations are gradually being lifted and some similarity to regularity is starting to returned, what should lodging proprietors and the board do to win back visitors while additionally planning for the following worldwide calamity? How would hotels be able to deal with become more debacle strong? it explicitly intended to empower the facilities business to skip back better after each catastrophe. 
+
+How can it work? 
+
+The DRRH profits by the fundamental need of lodgings to elevate and showcase itself to forthcoming visitors. It considers lodgings to advertise their properties, offices and administrations from an alternate point of view — its capacity to ricochet back better from catastrophes and emergencies. 
+
+Following the structure, the rating investigates an inn's arrangements, programs, apparatuses, frameworks, and trainings that will permit it to forestall, relieve, plan for, and react to catastrophes.
+</div>
 About us
 {% elif page_content=="contact_us" -%}
+<h2 class="text-center">CONTACT US</h2>
+<div class="col-sm-5 ">
+    <p>Contact us and we'll get back to you within 24 hours.</p>
+    <br>
+    <p><span class="glyphicon glyphicon-map-marker"></span> Manila, Philippines</p>
+    <p><span class="glyphicon glyphicon-phone"></span> +63 9231230132</p>
+    <p><span class="glyphicon glyphicon-envelope"></span> info@hoteldrrating.com</p>
+  </div>
+  <form id="frmContact" name="frmContact" method="post" action="">
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="con_name" name="con_name" placeholder="Name" type="text" required="">
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="con_email" name="con_email" placeholder="Email" type="email" required="">
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default" id="btnSend" name="btnSend" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </form>
 Contact us
 {% elif page_content=="framework" -%}
 Framework
@@ -58,6 +167,8 @@ Faq
 Assessment
 {% elif page_content=="rated_hotels" -%}
 Rated hotels
+{% elif page_content=="news" -%}
+News
 {% else -%}
     <h1 class="display-4">404 Content not found</h1>
 {% endif -%}
@@ -119,18 +230,20 @@ Rated hotels
 </div>
 {% endblock %}
 {%block sidebar %}
-<a href="{{ url_for('home',content='about_us')}}" ><i class="fas fa-info btn"></i>&nbsp;&nbsp;&nbsp; About Us</a>
+<a href="{{ url_for('home',content='home')}}"><i class="fas fa-home"></i> Home</a>
+<br><br>
+<a href="{{ url_for('home',content='about_us')}}" ><i class="fas fa-info btn"></i>About Us</a>
 <br><br>
 <a href="{{ url_for('home',content='contact_us')}}"><i class="fas fa-id-card-alt btn"></i> Contact Us</a>
 <br><br>
 <a href="{{ url_for('home',content='framework')}}"><i class="fas fa-cogs btn"></i> Framework</a>
 <br><br>
-<a href="{{ url_for('home',content='partners')}}">&nbsp;<i class="fa fa-handshake" ></i>&nbsp;&nbsp; Partners</a>
+<a href="{{ url_for('home',content='partners')}}"><i class="fas fa-handshake btn"></i> </i> Partners</a>
 <br><br>
-<a href="{{ url_for('home',content='assessment')}}">&nbsp;<i class="fas fa-check"></i>&nbsp;&nbsp; Assessment</a>
+<a href="{{ url_for('home',content='assessment')}}"><i class="fas fa-check btn"></i> Assessment</a>
 <br><br>
-<a href="{{ url_for('home',content='rated_hotels')}}">&nbsp;<i class="fa fa-star"></i>&nbsp;&nbsp;Rated Hotels</a>
+<a href="{{ url_for('home',content='rated_hotels')}}"><i class="fas fa-star btn"></i>Rated Hotels</a>
 <br><br>
-<a href="{{ url_for('home',content='faq')}}">&nbsp;<i class="fas fa-question"></i>&nbsp;&nbsp;&nbsp;FAQ</a>
+<a href="{{ url_for('home',content='faq')}}"><i class="fas fa-question btn"></i>FAQ</a>
 
 {% endblock %}

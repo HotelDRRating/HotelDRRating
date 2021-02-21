@@ -15,42 +15,101 @@
 		body{
 			background-image: url("{{ url_for('static',filename='images/bg.jpg')}}");
 		}
-		.btn{
-			width: auto;
+		#header-head{
+		width: 90%;
+		background-color: rgba(255, 255, 255, 0.2);
 		}
-		.sidenav a{
-			width: 400px;
-			margin-top: 20px;
-			text-decoration:none;
-			font-size: 22px;
-			color: brown;
-		}
-		.sidenav .fas{
-			color: brown;
-		}
-		.sidenav a:hover{
-			border: 1px solid;
-			border-color: black;
+		/* The sidebar menu */
+	.sidenav {
+	height: 100%; /* Full-height: remove this if you want "auto" height */
+	width: 350px; /* Set the width of the sidebar */
+	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+	z-index: 1; /* Stay on top */
+	top: 0; /* Stay at the top */
+	left: 0;
+	background-color: rgba(255, 255, 255, 0); /* Black */
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 20px;
+	}
 
-		}
+	/* The navigation menu links */
+	.sidenav a {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 25px;
+	color: brown;
+	display: block;
+	}
+	.sidenav .fas{
+		color: brown;
+	}
+
+	/* When you mouse over the navigation links, change their color */
+	.sidenav a:hover {
+	border: 1px solid brown;
+
+	}
+
+	/* Style page content */
+	.main {
+	margin-left: 160px; /* Same as the width of the sidebar */
+	padding: 0px 10px;
+	}
+
+	/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+	@media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+	}
+	#cont{
+		background-color: rgba(255, 255, 255, 0);
+		color: brown;
+	}
+	#head{
+		font-size: 40px;
+	}
+	#carousel-caption p{
+		color: burlywood;
+	}
+	#image{
+		width:600px;
+		height: 400px;
+	}
+	#rated{
+		height: 500px;
+	}
+	a{
+		text-decoration: none;
+		color: brown;
+	}
+	a:hover{
+		text-decoration: none;
+		color: brown;
+	}
+	#ratingProc{
+		display: block;
+	}
+
 	</style>
 	<body>
 	<nav class="navbar navbar-expand-sm sticky-top" id="nav">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				{% block home %}
-			   {% endblock %}
+				{% endblock %}
 			</li>
 		</ul>
 		{%block nav%} {% endblock %}
-		
+		<div class="sidenav ">
+			<br>
+			{%block sidebar%}
+			{%endblock %}
+		</div>
 		<div class="container-fluid" >
 						<div class="container">
 				<div class="row" id="row">
 					<div class="col">
-						<center><h1 class="display-4" id="titleHeader">The Disaster Resilience Rating For Hotels</h1>
-							
-						</center>
+						<center><h1 class="display-4" id="titleHeader">The Disaster Resilience Rating For Hotels</h1></center>
 					</div>
 				</div>
 				<div class="row" id="row">
@@ -60,14 +119,12 @@
 				</div>
 			</div>
 
-			<div class="container"><!-- content -->
-			{% block content %}
-			{% endblock %}
+			<div class="container" id="cont"><!-- content -->
+				{% block content %}
+				{% endblock %}
+			</div>
 		</div>
-		</div>
-		<div class="sidenav ">
-			{%block sidebar%}{%endblock %}
-		</div>
+		
 		
 		
 		<!--
@@ -78,4 +135,13 @@
 {% block modals %}
 
 {% endblock %}
+<div class="modal" id="framework-show" tabindex="-1" role="dialog" aria-labelledby="ModalRegister" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<iframe src="http://www.hoteldrrating.com/resources/videos/Hotel_Resilience_Presentation.mp4" width="450px" height="450px"></iframe>
+			</div>
+		</div>
+		</div>
+	</div>
 </html>

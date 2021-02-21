@@ -3,13 +3,10 @@ from scripts import *
 __NULL__ = ""
 app = Flask(__name__)
 
-@app.route('/send_appreciation/')
-def send_appreciation(test):
-    email = request.form.get('email')
-    msg = request.form.get('message')
-    mailer = emailing()
-    mailer.send_thank_you(email=email)
-    return redirect('/contact_us')
+@app.route('/contact_us')
+def contact_us():
+    #insert logic here
+    return redirect(url_for('home',content="contact_us"))
 @app.route('/',methods=["GET","POST"])
 def index():
     return redirect(url_for('home',content="home"))
