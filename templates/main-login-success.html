@@ -11,8 +11,36 @@ The Disaster Resilience Rating For Hotels - Home
 {% endblock %}
 {% block content %}
 {% if page_content=="home" -%}
+
 {% elif page_content=="about_us" -%}
+
 {% elif page_content=="contact_us" -%}
+<h2 class="text-center">CONTACT US</h2>
+<div class="col-sm-5 ">
+    <p>Contact us and we'll get back to you within 24 hours.</p>
+    <br>
+    <p><span class="glyphicon glyphicon-map-marker"></span> Manila, Philippines</p>
+    <p><span class="glyphicon glyphicon-phone"></span> +63 9231230132</p>
+    <p><span class="glyphicon glyphicon-envelope"></span> info@hoteldrrating.com</p>
+  </div>
+  <form id="frmContact" name="frmContact" method="post" action="">
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="con_name" name="con_name" placeholder="Name" type="text" required="">
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="con_email" name="con_email" placeholder="Email" type="email" required="">
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default" id="btnSend" name="btnSend" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </form>
 {% elif page_content=="framework" -%}
 {% elif page_content=="partners" -%}
 {% elif page_content=="faq" -%}
