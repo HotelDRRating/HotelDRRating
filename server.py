@@ -37,16 +37,11 @@ def logout():
 @app.route('/register', methods=["GET","POST"])
 def register():
     content = request.args.get('content')
-    hotel = request.form.get('hotel')   
-    fname = request.form.get('fullname')
-    email = request.form.get('email')
-    passw = request.form.get('password')
-    if content == None and hotel == None and fname == None and email == None and passw == None:
-        return "<h1>INVALID ACCESS!</h1>"
-    x = binary()
-    data = x.convert_to_binary(hotel,fname,email,passw)
-    q = hotelDB()
-    q.insert(data["hotel"],data["fullname"],data["email"],data["password"])
+    data = {"hotel" : request.form.get('hotel'),"fullname": request.form.get('fullname'), "email": request.form.get('email'), "password": request.form.get('password')}
+    #returns to the home page accessed randomly
+    if data["hotel"] == None and data["fullname"] == None and data["email"] == None and data["password"] == None:
+        return redirect(url_for('home',content="home"),code=200)
+    
     #returns to the page they were currently viewing
     return redirect(url_for('home',content=content),code=302)
 @app.route('/login', methods=["GET","POST"])
