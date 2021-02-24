@@ -43,7 +43,7 @@
             <p><i class="fas fa-circle">&nbsp;</i>We need to make sure our instituitions are resilient</p>
         </div>
         <div class="row">
-            <p>And it begins with knowing where we stand? Is your hotel resilient? Click <a href="javascript:void(0)" data-toggle="modal" data-target="#framework-show">here</a> to see how our framework works</p>
+            <p><i class="fas fa-circle">&nbsp;</i>And it begins with knowing where we stand? Is your hotel resilient? Click <a href="javascript:void(0)" data-toggle="modal" data-target="#framework-show">here</a> to see how our framework works</p>
         </div>
     </div>
 </div>
@@ -90,29 +90,37 @@
     
 </div>
 <div class="row" id="titleHeader">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Step 1</h4>
-            <p class="card-text">Self Assessment</p>
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Step 1</h4>
+                <p class="card-text">Self Assessment</p>
+            </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Step 2</h4>
-            <p class="card-text">Third Party Resilience Audit</p>
+    <div class='col-sm'>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Step 2</h4>
+                <p class="card-text">Third Party Resilience Audit</p>
+            </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Step 3</h4>
-            <p class="card-text">Industry Association<br> Validation and Approval</p>
+    <div class='col-sm'>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Step 3</h4>
+                <p class="card-text">Industry Association Validation and Approval</p>
+            </div>
         </div>
     </div>
+    <div class='col-sm'>
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Step 4</h4>
             <p class="card-text">Publication of Rating</p>
         </div>
+    </div>
     </div>
 </div>
 
@@ -167,9 +175,9 @@ Framework
 
 <div class="row" id = "body">
     <p>Currently, we have no partners yet. Join us by clicking the button below!</p>
-    <form method="post" action="/contact_us">
-        <button type="submit">Contact Us</button>
-    </form>
+
+    <a href="{{url_for('home',content='contact_us')}}"><button type="button" class="btn">TEST</button></a>
+
 </div>
 {% elif page_content=="faq" -%}
 Faq

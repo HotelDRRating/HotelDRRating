@@ -1,5 +1,6 @@
 from flask import Flask,redirect,url_for,render_template,request
 from scripts import *
+import RSA as rsa, random
 __NULL__ = ""
 app = Flask(__name__)
 
@@ -24,7 +25,7 @@ def home():
                 break
             xx.append(x)
         return redirect(url_for('home/success',page_content=content,username="".join(xx),isloggedin=1))
-    return render_template('main.html',page_content=content,isloggedin=0),200
+    return render_template('main.html',page_content=content),200
 @app.route('/home/success')
 def success():
     page_content = request.args.get('page_content') 
@@ -34,16 +35,21 @@ def success():
 def logout():
     content = request.args.get('content')
     return redirect(url_for('home',content=content))
-@app.route('/register', methods=["GET","POST"])
+@app.route('/home/register', methods=["GET","POST"])
 def register():
+    randnum = random.randint(100000,999999)
+    key = rsa.generate_key()
     content = request.args.get('content')
-    data = {"hotel" : request.form.get('hotel'),"fullname": request.form.get('fullname'), "email": request.form.get('email'), "password": request.form.get('password')}
+    hotel = request.form.get('hotel')
+    fullname = request.form.get('fullname')
+    email = request.form.get('email')
+    password = request.form.get('password')
     #returns to the home page accessed randomly
-    if data["hotel"] == None and data["fullname"] == None and data["email"] == None and data["password"] == None:
+    if hotel == None and email == None and password == None and email == None and password == None:
         return redirect(url_for('home',content="home"),code=200)
-    
-    #returns to the page they were currently viewing
-    return redirect(url_for('home',content=content),code=302)
+    else:
+        #returns to the page they were currently viewing
+        return redirect(url_for('home',content=content),code=302)
 @app.route('/login', methods=["GET","POST"])
 def login():
     
@@ -52,14 +58,12 @@ def login():
     passw = request.form.get('password')
     if content == None and email == None and passw == None:
         return "<h1>INVALID ACCESS!</h1>"
-    x = binary()
-    data = x.convert_to_binary("","",email,passw)
-    hotel = hotelDB()
-    if hotel.login_auth(email = data["email"],password=data["password"]):
-        return redirect(url_for('home/success',content=content))
     else:
-        return "<h1> LOGIN FAILED </H1>"
 
+        if True:
+            return redirect(url_for('home/success',content=content))
+        else:
+            return "<h1> LOGIN FAILED </H1>"
 '''
 @app.route('/login-auth', methods=["GET","POST"])
 def login_auth():
