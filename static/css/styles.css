@@ -31,3 +31,18 @@
 	color: brown;
 	background: rgba(250,235,215, 0.5);
 }
+
+.individual-box {
+    opacity: 1.0;
+    background-color: #FFF;
+    color: #000;
+    width: 95%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.container-fluid {
+    padding: 60px 50px;
+}
