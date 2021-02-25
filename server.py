@@ -1,9 +1,5 @@
 from flask import Flask,redirect,url_for,render_template,request
-<<<<<<< HEAD
-from scripts import *
 import RSA as rsa, random
-=======
->>>>>>> 9096c9d632b4da53ee4d38a0e4425fb44c937725
 __NULL__ = ""
 app = Flask(__name__)
 
