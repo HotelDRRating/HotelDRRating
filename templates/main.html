@@ -168,17 +168,17 @@ Contact us
 {% elif page_content=="framework" -%}
 Framework
 {% elif page_content=="partners" -%}
-<center><div class="row" id="header">
-    <h1>OUR PARTNERS</h1><br>
-    <p>This is a list of our partners who helped us set the ratings on the hotels.</p>
-</div></center>
+<div class="row" id="header">
+    <h1><center>OUR PARTNERS</center></h1><br>
+</div>
 
-<center><div class="container-fluid individual-box" id = "body">
-    <p>Currently, we have no partners yet. Join us by clicking the button below!</p>
+<div class="container-fluid individual-box" id = "body">
+    <p>This is a list of our partners who helped us set the ratings on the hotels.</p>
+    <p><center>Currently, we have no partners yet. Join us by clicking the button below!</p>
 
     <a href="{{url_for('home',content='contact_us')}}"><button type="button" class="btn">Contact Us</button></a>
-
-</div></center>
+    </center>
+</div>
 {% elif page_content=="faq" -%}
 <br>
 
