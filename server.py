@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 from flask import Flask,redirect,url_for,render_template,request,flash,session
 import random
 from db import Hotel,rsaDB
 from CRYPT import c
+=======
+from flask import Flask,redirect,url_for,render_template,request
+import RSA as rsa, random
+>>>>>>> dceefc773b03aee368a55281dbe3a84fc78a024e
 __NULL__ = ""
 app = Flask(__name__)
 CRYPT = c()
