@@ -3,6 +3,8 @@
 {% block title %} {% endblock %}
 
 <head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,15 +24,17 @@
 		}
 		/* The sidebar menu */
 	.sidenav {
-	height: 100%; /* Full-height: remove this if you want "auto" height */
-	width: 350px; /* Set the width of the sidebar */
+	height: 900px; /* Full-height: remove this if you want "auto" height */
+	width: 0px; /* Set the width of the sidebar */
 	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
 	z-index: 1; /* Stay on top */
-	top: 0; /* Stay at the top */
+	top: 50; /* Stay at the top */
 	left: 0;
 	background-color: rgba(255, 255, 255, 0); /* Black */
 	overflow-x: hidden; /* Disable horizontal scroll */
+	overflow: hidden;
 	padding-top: 20px;
+	transition: 150ms;
 	}
 
 	/* The navigation menu links */
@@ -41,7 +45,7 @@
 	color: brown;
 	display: block;
 	}
-	.sidenav .fas{
+	.sidenav .fas, .fas{
 		color: brown;
 	}
 
@@ -50,7 +54,6 @@
 	border: 1px solid brown;
 
 	}
-
 	/* Style page content */
 	.main {
 	margin-left: 160px; /* Same as the width of the sidebar */
@@ -90,16 +93,62 @@
 	#ratingProc{
 		display: block;
 	}
-
-	</style>
-	<body>
+	#bottom{
+		border-bottom: 5px solid brown;
 		
-	<nav class="navbar navbar-expand-sm sticky-top" id="nav">
+	}
+	#quest{
+		border-right: 5px solid brown;
+		width: 500px;
+		text-align: center;
+		vertical-align: middle;
+	}
+	#tbl{
+		border: 5px solid brown;
+	}
+	#dismiss{
+		color: brown;
+	}
+	#side{
+		transition-delay: 2s;
+		transition: 2s;
+	}
+	</style>
+	<script>
+		$(document).ready(function(){
+			var a = true;
+			$('#side').click(function(){
+				if(a){
+					$('.sidenav').css('width','250px');
+					$('#fas').removeClass('fa-bars')
+					$('#fas').addClass('fa-window-close')
+					a=!a;
+				}
+				else{
+					$('.sidenav').css('width','0px');
+					$('#fas').removeClass('fa-window-close').delay(2000)
+					$('#fas').addClass('fa-bars')
+					a=!a;
+				}
+				
+			})
+			$
+		})
+	</script>
+	<body>
 		<div class="sidenav ">
+			
 			{%block sidebar%}
 			{%endblock %}
 			
 		</div>
+	<nav class="navbar navbar-expand-sm sticky-top" id="nav">
+		
+		<ul class='navbar-nav '>
+			<li class="nav-item">
+				<a href='javascript:void(0)' class='btn' id='side'><i class="fas fa-bars" id='fas'></i></a>
+			</li>
+		</ul>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				{% block home %}

@@ -1,5 +1,45 @@
-import pymysql as psql
-
+import pymysql as psql,CRYPT
+class rsaDB(object):
+    __dbname = "hotelDRRating"
+    def __init__(self):
+        self.create_db()
+        self.create_rsakeys_table()
+        return
+    def create_db(self):
+        conn=psql.connect(host='localhost',user='root',password='')
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.__dbname}")
+        finally:
+            conn.close()
+    def create_rsakeys_table(self):
+        conn = psql.connect(host='localhost',user='root',password='',database=self.__dbname)
+        try:
+            with conn.cursor() as cursor:            
+                cursor.execute("CREATE TABLE IF NOT EXISTS rsakeys(_id INTEGER AUTO_INCREMENT PRIMARY KEY, _privateKey VARCHAR(2000) NOT NULL, _publicKey VARCHAR(2000) NOT NULL,_email TEXT NOT NULL)")
+                conn.commit()
+                return True
+        except:
+            return False
+        finally:
+            conn.close()
+    def insert(self,privatekey,publickey,email):
+        conn = psql.connect(host='localhost',user='root',password='',database=self.__dbname)
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute(f"INSERT INTO `rsakeys`(_privateKey,_publickey_email) VALUES(`{privatekey}`,`{publickey}`,`{email}`);")
+                conn.commit()
+        finally:
+            conn.close()
+    def getKeys(self,email):
+        conn = psql.connect(host='localhost',user='root',password='',database=self.__dbname)
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute(f"SELECT * FROM `rsakeys` WHERE _email = `{email}`")
+                row = cursor.fetchone()
+                return {"privatekey": row[1], "publickey" : row[2]}
+        finally:
+            conn.close()
 class Hotel(object):
     __dbname = "hotelDRRating"
     def __init__(self):
@@ -23,11 +63,11 @@ class Hotel(object):
             return False
         finally:
             conn.close()
-    def insert(self,hotel:str,fullname:str,email:str,password:str):
+    def insert(self,hotel:str,fullname:str,email:str,password:str,otp:int):
         conn=psql.connect(host='localhost',user='root',password='',database=self.__dbname)
         try:
             with conn.cursor() as cursor:
-                sql = f"INSERT INTO `hotelinfo`(_hotel,_fullname,_email,_password) VALUES('{hotel}','{fullname}','{email}','{password}');"
+                sql = f"INSERT INTO `hotelinfo`(_hotel,_fullname,_email,_password,_otp,_verified) VALUES('{hotel}','{fullname}','{email}','{password}',{otp},0);"
                 cursor.execute(sql)
                 conn.commit()
                 return True
@@ -46,8 +86,11 @@ class Hotel(object):
         finally:
             conn.close()
     def verify(self,otp, email):
+        rsadb = rsaDB()
         conn=psql.connect(host='localhost',user='root',password='',database=self.__dbname)
         try:
+            keys = rsadb.getKeys(email=email)
+            email = CRYPT.encrypt(email,keys["public"])
             with conn.cursor() as cursor:
                 sql = f"SELECT * FROM hotelinfo WHERE _email = '{email}'"
                 cursor.execute(sql)
@@ -96,45 +139,5 @@ class Hotel(object):
                 return True
         except:
             return False
-        finally:
-            conn.close()
-class rsaDB(object):
-    def __init__(self):
-        self.create_db()
-        self.create_rsakeys_table()
-        return
-    def create_db(self):
-        conn=psql.connect(host='localhost',user='root',password='')
-        try:
-            with conn.cursor() as cursor:
-                cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.__dbname}")
-        finally:
-            conn.close()
-    def create_rsakeys_table(self):
-        conn = psql.connect(host='localhost',user='root',password='',database=self.__dbname)
-        try:
-            with conn.cursor() as cursor:            
-                cursor.execute("CREATE TABLE IF NOT EXISTS rsakeys(_id INTEGER AUTO_INCREMENT PRIMARY KEY, _privateKey VARCHAR(2000) NOT NULL, _publicKey VARCHAR(2000) NOT NULL,_email TEXT NOT NULL")
-                conn.commit()
-                return True
-        except:
-            return False
-        finally:
-            conn.close()
-    def insert(self,privatekey,publickey,email):
-        conn = psql.connect(host='localhost',user='root',password='',database=self.__dbname)
-        try:
-            with conn.cursor() as cursor:
-                cursor.execute(f"INSERT INTO `rsakeys`(_privateKey,_publickey_email) VALUES(`{privatekey}`,`{publickey}`,`{email}`);")
-                conn.commit()
-        finally:
-            conn.close()
-    def getKeys(self,email):
-        conn = psql.connect(host='localhost',user='root',password='',database=self.__dbname)
-        try:
-            with conn.cursor() as cursor:
-                cursor.execute(f"SELECT * FROM `rsakeys` WHERE _email = `{email}`")
-                row = cursor.fetchone()
-                return {"privatekey": row[1], "publickey" : row[2]}
         finally:
             conn.close()

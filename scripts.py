@@ -1,17 +1,7 @@
 import pymysql as psql,smtplib,ssl,base64 as b64
-from Crypto import Random
-from Crypto.PublicKey import RSA
+import rsa
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-class rsa(object):
-    def __init__(self):
-        return
-    def generate_key(self,bits=2048):
-        private = RSA.generate(bits,Random.new().read)
-        public = private.publickey()
-        return private.exportKey(),public.exportKey()
-    def encrypt(self,string,pubkey):
-        return b64.b64encode(pubkey.encrypt(string,32)[0]) 
 class emailing(object):
     sender_email = 'V!6ga2$r6?Jf$8Ye¥oI1@73EG?o@kl7?yOp#¢5Bt$8YeB6$&a2$rr!0XV!6gp0t$Yo!fu$t!B6$&'#change and obfuscate later
     password = 'V!6gu$t!V!6g@73E8?Ty£tOyG?o@Pk&*q8u?'#change and obfuscate later
