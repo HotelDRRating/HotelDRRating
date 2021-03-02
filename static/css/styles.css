@@ -28,6 +28,14 @@
 	margin-left: 25px;
 }
 #titleHeader{
-	color: brown;
+	color: rgb(14, 13, 13);
 	background: rgba(250,235,215, 0.5);
+	font-family: 'Belleza', sans-serif;
 }
+.Content{
+	color: rgb(14, 13, 13);
+	font-size: 25px;
+	font-family: 'Proza Libre', sans-serif;
+
+}
+
