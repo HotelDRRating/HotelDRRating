@@ -127,7 +127,7 @@
 
 {% elif page_content=="about_us" -%}
 <center><div id="header-head"><h1 class="display-4">About Us</h1></div></center>
-<div class="content">
+<div class="row" id="titleHeader">
 This COVID-19 pandemic is a phenomenal occasion that has prompted gigantic joblessness and financial slumps everywhere on the world. The inn area, which is profoundly reliant on vacationers and explorers, has been seriously influenced. Since limitations are gradually being lifted and some similarity to regularity is starting to returned, what should lodging proprietors and the board do to win back visitors while additionally planning for the following worldwide calamity? How would hotels be able to deal with become more debacle strong? it explicitly intended to empower the facilities business to skip back better after each catastrophe. 
 
 How can it work? 
@@ -136,7 +136,6 @@ The DRRH profits by the fundamental need of lodgings to elevate and showcase its
 
 Following the structure, the rating investigates an inn's arrangements, programs, apparatuses, frameworks, and trainings that will permit it to forestall, relieve, plan for, and react to catastrophes.
 </div>
-About us
 {% elif page_content=="contact_us" -%}
 <h2 class="text-center">CONTACT US</h2>
 <div id='titleHeader'>
@@ -168,21 +167,10 @@ About us
   </form>
   </div>
   </div>
-Contact us
 {% elif page_content=="framework" -%}
 Framework
 {% elif page_content=="partners" -%}
 <div class="row" id="titleHeader">
-    <center><h1>OUR PARTNERS</h1><br>
-    <p>This is a list of our partners who helped us set the ratings on the hotels.</p></center>
-</div>
-
-<div class="row" id = "titleHeader">
-    <p>Currently, we have no partners yet. Join us by clicking the button below!</p>
-    
-</div>
-<div class="row" id="titleHeader">
-    <a href="{{url_for('home',content='contact_us')}}" class="btn" style="border: 1px solid antiquewhite">Contact Us</a>
 <div class="container-fluid individual-box" id="header">
     <h2 class="text-center">OUR PARTNERS</h1><br>
 </div>
@@ -191,7 +179,7 @@ Framework
     <p><center>This is a list of our partners who helped us set the ratings on the hotels.</p>
     <p>Currently, we have no partners yet. Join us by clicking the button below!</p>
 
-    <a href="{{url_for('home',content='contact_us')}}"><button type="button" class="btn">Contact Us</button></a>
+    <a href="{{url_for('home',content='contact_us')}}"><button type="button" class="bt">Contact Us</button></a>
     </center>
 </div>
 {% elif page_content=="faq" -%}
