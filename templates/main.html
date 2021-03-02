@@ -37,15 +37,15 @@
 {% if page_content=="home" -%}
 <div class="row" id="titleHeader">
     <div class="col">
-        <h1  ><center>WE LIVE IN A VUCA WORLD</center></h2>
+        <h1 style><center>WE LIVE IN A VUCA WORLD</center></h2>
         <div class="row">
-            <p><i class="fas fa-circle">&nbsp;</i>Where disasters are waiting around the corner.</p>
+            <p style = "color:black"><i class="fas fa-circle">&nbsp;</i>Where disasters are waiting around the corner.</p>
         </div>
         <div class="row">
-            <p><i class="fas fa-circle">&nbsp;</i>We need to make sure our instituitions are resilient</p>
+            <p style= "color:black"><i class="fas fa-circle">&nbsp;</i>We need to make sure our instituitions are resilient</p>
         </div>
         <div class="row">
-            <p><i class="fas fa-circle">&nbsp;</i>And it begins with knowing where we stand? Is your hotel resilient? Click <a href="javascript:void(0)" data-toggle="modal" data-target="#framework-show">here</a> to see how our framework works</p>
+            <p style = "color:black"><i class="fas fa-circle">&nbsp;</i>And it begins with knowing where we stand? Is your hotel resilient? Click <a href="javascript:void(0)" data-toggle="modal" data-target="#framework-show">here</a> to see how our framework works</p>
         </div>
     </div>
 </div>
@@ -95,32 +95,32 @@
     <div class="col-sm">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Step 1</h4>
-                <p class="card-text">Self Assessment</p>
+                <h4 style="color:black" class="card-title">Step 1</h4>
+                <p style = "color:black" class="card-text">Self Assessment</p>
             </div>
         </div>
     </div>
     <div class='col-sm'>
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Step 2</h4>
-                <p class="card-text">Third Party Resilience Audit</p>
+                <h4 style="color:black" class="card-title">Step 2</h4>
+                <p style = "color:black" class="card-text">Third Party Resilience Audit</p>
             </div>
         </div>
     </div>
     <div class='col-sm'>
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Step 3</h4>
-                <p class="card-text">Industry Association Validation and Approval</p>
+                <h4 style="color:black" class="card-title">Step 3</h4>
+                <p style = "color:black" class="card-text">Industry Association Validation and Approval</p>
             </div>
         </div>
     </div>
     <div class='col-sm'>
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Step 4</h4>
-            <p class="card-text">Publication of Rating</p>
+            <h4 style ="color:black" class="card-title">Step 4</h4>
+            <p style = "color:black" class="card-text">Publication of Rating</p>
         </div>
     </div>
     </div>
@@ -128,26 +128,28 @@
 
 
 {% elif page_content=="about_us" -%}
-<center><div id="header-head"><h1 class="display-4">About Us</h1></div></center>
-<div class="content">
-This COVID-19 pandemic is a phenomenal occasion that has prompted gigantic joblessness and financial slumps everywhere on the world. The inn area, which is profoundly reliant on vacationers and explorers, has been seriously influenced. Since limitations are gradually being lifted and some similarity to regularity is starting to returned, what should lodging proprietors and the board do to win back visitors while additionally planning for the following worldwide calamity? How would hotels be able to deal with become more debacle strong? it explicitly intended to empower the facilities business to skip back better after each catastrophe. 
+<div class="row" id="titleHeader">
+<div class="container-fluid individual-box" id="header">
+    <h2 class="text-center">ABOUT US</h1><br>
+</div>
+<p style = "color:black">This COVID-19 pandemic is a phenomenal occasion that has prompted gigantic joblessness and financial slumps everywhere on the world. The inn area, which is profoundly reliant on vacationers and explorers, has been seriously influenced. Since limitations are gradually being lifted and some similarity to regularity is starting to returned, what should lodging proprietors and the board do to win back visitors while additionally planning for the following worldwide calamity? How would hotels be able to deal with become more debacle strong? it explicitly intended to empower the facilities business to skip back better after each catastrophe. 
 
 How can it work? 
 
 The DRRH profits by the fundamental need of lodgings to elevate and showcase itself to forthcoming visitors. It considers lodgings to advertise their properties, offices and administrations from an alternate point of view — its capacity to ricochet back better from catastrophes and emergencies. 
 
 Following the structure, the rating investigates an inn's arrangements, programs, apparatuses, frameworks, and trainings that will permit it to forestall, relieve, plan for, and react to catastrophes.
-</div>
-About us
+</p></div>
 {% elif page_content=="contact_us" -%}
-<h2 class="text-center">CONTACT US</h2>
 <div id='titleHeader'>
+<h2 class="text-center">CONTACT US</h2>
+<br>
 <div class="col-sm-5 " >
-    <p>Contact us and we'll get back to you within 24 hours.</p>
+    <p style = "color:black">Contact us and we'll get back to you within 24 hours.</p>
     <br>
-    <p><i class="fas fa-map-marker-alt">&nbsp;</i> Manila, Philippines</p>
-    <p><i class='fas fa-phone'>&nbsp;</i> +63 9231230132</p>
-    <p><i class='fas fa-envelope'>&nbsp;</i> info@hoteldrrating.com</p>
+    <p style = "color:black"><span class="glyphicon glyphicon-map-marker"></span> Manila, Philippines</p>
+    <p style = "color:black"><span class="glyphicon glyphicon-phone"></span> +63 9231230132</p>
+    <p style = "color:black"><span class="glyphicon glyphicon-envelope"></span> info@hoteldrrating.com</p>
   </div>
   <div class="form-group">
   <form id="frmContact" name="frmContact" method="post" action="">
@@ -163,39 +165,31 @@ About us
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default" id="btnSend" name="btnSend" type="submit">Send</button>
+          <button class="bt" btn-default" id="btnSend" name="btnSend" type="submit">Send</button>
         </div>
       </div>
     </div>
   </form>
   </div>
   </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f9152ac1e1e8b1da05825dfd2e12f21272803f0d
 {% elif page_content=="framework" -%}
 <div id='titleHeader'>
     <h2 class='text-center' id='ssss'>Please be logged in to see the framework</h2>
 </div>
 {% elif page_content=="partners" -%}
 <div class="row" id="titleHeader">
-    <center><h1>OUR PARTNERS</h1><br>
-    <p>This is a list of our partners who helped us set the ratings on the hotels.</p></center>
-</div>
-
-<div class="row" id = "titleHeader">
-    <p>Currently, we have no partners yet. Join us by clicking the button below!</p>
-    
-</div>
-<div class="row" id="titleHeader">
-    <a href="{{url_for('home',content='contact_us')}}" class="btn" style="border: 1px solid antiquewhite">Contact Us</a>
 <div class="container-fluid individual-box" id="header">
     <h2 class="text-center">OUR PARTNERS</h1><br>
 </div>
-
 <div class="container-fluid individual-box" id = "body">
-    <p><center>This is a list of our partners who helped us set the ratings on the hotels.</p>
-    <p>Currently, we have no partners yet. Join us by clicking the button below!</p>
+   <center><p style="color:black">This is a list of our partners who helped us set the ratings on the hotels.</p>
+    <p style="color: black">Currently, we have no partners yet. Join us by clicking the button below!</p>
 
-    <a href="{{url_for('home',content='contact_us')}}"><button type="button" class="btn">Contact Us</button></a>
+    <a href="{{url_for('home',content='contact_us')}}"><button type="button" class="bt">Contact Us</button></a>
     </center>
 </div>
 {% elif page_content=="faq" -%}
@@ -205,11 +199,11 @@ About us
     <table class="table table-bordered" id='tbl'>
         <tbody>
             <tr>
-                <td id='quest'>What is the Disaster Resilience Rating for Hotels?</td>
-                <td> The DRRH is a thesis (capstone) project by a group of graduate students from the Asian Institute of Management (AIM), centered on co-creating a disaster resilience rating together with hotel industry associations/groups that will be shared publicly via Online Travel Agents (OTAs) and other media platforms as a way of gaining confidence from the general public. </td>
+                <td id='quest'><p style = "color:black">What is the Disaster Resilience Rating for Hotels?</td>
+                <td>The DRRH is a thesis (capstone) project by a group of graduate students from the Asian Institute of Management (AIM), centered on co-creating a disaster resilience rating together with hotel industry associations/groups that will be shared publicly via Online Travel Agents (OTAs) and other media platforms as a way of gaining confidence from the general public. </td>
             </tr>
             <tr>
-                <td id='quest'>How will the rating measure the hotel's level of disaster resilience?</td>
+                <td id='quest'><p style = "color:black"></p>How will the rating measure the hotel's level of disaster resilience?</td>
                 <td> The DRRH follows the Resilience Programming Framework (RPF) created by Resilient.PH. The rating will evaluate the management practices — Asset Protection and Risk Management (APRM), Business Continuity Management (BCM), Disaster Risk Reduction (DRR), Emergency, Crisis and Opportunity Management (ECOM) and Risk/Crisis Communication (R/CCOMM) by reviewing existing policies, programs, systems, trainings, and tools (including finances) of hotels and assigning scores based on resilient level criteria - base (for local industry practices/compliance driven practices) mid (international best practice/above compliance) and high (for proven effective novel practices/thought leadership). </td>
             </tr>
             <tr>
@@ -280,7 +274,7 @@ About us
             <tr>
                 <td id='quest'></td>
                 <td></td>
-            </tr>
+            </tr></p>
         </tbody>
     </table>
     
