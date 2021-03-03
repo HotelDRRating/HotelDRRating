@@ -1,6 +1,11 @@
 from flask import Flask,redirect,url_for,render_template,request
 import random,pymysql as psql
 from CRYPT import c
+from Crypto import Random
+from Crypto.Cipher import PKCS1_v1_5
+from Crypto.PublicKey import RSA
+from Crypto.Hash import SHA
+import base64 as b64
 __NULL__ = ""
 app = Flask(__name__)
 def generate(bits=2048):
@@ -209,3 +214,19 @@ class Hotel(object):
             return False
         finally:
             conn.close()
+class rsa(object):
+    def __init__(self):
+        return
+    def generate(self,keysize=2048):
+        key = RSA.generate(keysize)
+        privatekey = key.export_key()
+        publickey = key.public_key().export_key()
+        return {"public" : publickey, "private" : privatekey.decode()}
+    def encrypt(self,msg,pubkey):
+        publickey = RSA.importKey(pubkey)
+        cipher = PKCS1_v1_5.new(publickey)
+        return b64.b64encode(cipher.encrypt(msg.encode('ascii'))).decode('ascii')
+    def decrypt(self,msg,privkey):
+        privatekey = RSA.importKey(privkey)
+        cipher = PKCS1_v1_5.new(privatekey)
+        return cipher.decrypt(b64.b64decode(msg), Random.new().read(20+SHA.digest_size)).decode('utf-8')
