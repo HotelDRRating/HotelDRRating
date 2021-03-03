@@ -12,6 +12,8 @@
     <title>The Disaster Resilience Rating For Hotels - Partners</title>
 {% elif page_content=="faq" -%}
     <title>The Disaster Resilience Rating For Hotels - FAQ</title>
+{% elif page_content=="news" -%}
+    <title>The Disaster Resilience Rating For Hotels - News</title>
 {% elif page_content=="rated_hotels" -%}
     <title>The Disaster Resilience Rating For Hotels - Rated Hotels</title>
 {% endif -%}
@@ -170,8 +172,14 @@ Following the structure, the rating investigates an inn's arrangements, programs
   </form>
   </div>
   </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> f9152ac1e1e8b1da05825dfd2e12f21272803f0d
 {% elif page_content=="framework" -%}
-Framework
+<div id='titleHeader'>
+    <h2 class='text-center' id='ssss'>Please be logged in to see the framework</h2>
+</div>
 {% elif page_content=="partners" -%}
 <div class="row" id="titleHeader">
 <div class="container-fluid individual-box" id="header">
@@ -185,11 +193,16 @@ Framework
     </center>
 </div>
 {% elif page_content=="faq" -%}
+<<<<<<< HEAD
 <br>
 
 
 </br>
 <div id="titleHeader" >
+=======
+<br></br>
+<div id="titleHeader">
+>>>>>>> 5c4ee8ca29213498f621795b2c3aee14100e9409
     <h2 class="text-center">FREQUENTLY ASKED QUESTIONS</h2>
     <table class="table table-bordered" id='tbl'>
         <tbody class = "content" >
@@ -279,9 +292,10 @@ Assessment
 {% elif page_content=="rated_hotels" -%}
 Rated hotels
 {% elif page_content=="news" -%}
-News
+<div id='titleHeader'><iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>   </div>
+
 {% else -%}
-    <h1 class="display-4">404 Content not found</h1>
+    <h1 class="display-4" id='titleHeader'>404 Content not found</h1>
 {% endif -%}
 {% endblock %}
 {% block modals %}
@@ -351,11 +365,14 @@ News
 <br><br>
 <a href="{{ url_for('home',content='partners')}}"><i class="fas fa-handshake btn"></i> </i> Partners</a>
 <br><br>
+<a href="{{ url_for('home',content='news')}}"><i class="fas fa-newspaper btn"></i> News</a>
+<br><br>
 <a href="{{ url_for('home',content='assessment')}}"><i class="fas fa-check btn"></i> Assessment</a>
 <br><br>
 <a href="{{ url_for('home',content='rated_hotels')}}"><i class="fas fa-star btn"></i>Rated Hotels</a>
 <br><br>
 <a href="{{ url_for('home',content='faq')}}"><i class="fas fa-question btn"></i>FAQ</a>
+
 
 
 {% endblock %}
