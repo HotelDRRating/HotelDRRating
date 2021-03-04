@@ -1,6 +1,6 @@
 from flask import Flask,redirect,url_for,render_template,request
 import random,pymysql as psql
-import crypto,rsadb,hash
+import crypto,rsadb
 __NULL__ = ""
 app = Flask(__name__)
 def generate(bits=2048):
@@ -41,7 +41,7 @@ def register():
     password = request.form.get('password')
     rsadb.insert(privatekey,publickey,email)
     data = {'hotel': crypto.encrypt(hotel,publickey),'fullname': crypto.encrypt(fullname),'email': crypto.encrypt(email,publickey),'password': crypto.encrypt(password,publickey),'hash':hash.hash(email+password)}
-    if hoteldb.insert(data['hotel'],data['fullname'],data['email'],data['password'],data['hasg']):
+    if hoteldb.insert(data['hotel'],data['fullname'],data['email'],data['password'],data['hash']):
         return redirect(url_for('home',content=content))
     else:
         return "<h1>500 Internal Server Error</h1>"
@@ -53,7 +53,7 @@ def login():
     email = request.form.get('email')
     passw = request.form.get('password')
     if content == None and email == None and passw == None:
-        return "<h1>INVALID ACCESS!</h1>"
+        return "<h1>INVALID ACCESS!</h1>",redirect(url_for('home',content="home"))
     return redirect(url_for('home/success',content=content))
 @app.route('/home/verify')
 def verify():

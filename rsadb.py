@@ -13,23 +13,23 @@ def create_table():
     conn = psql.connect(host='localhost',user='root',password='',database=__dbname)
     try:
         with conn.cursor() as cursor:
-            cursor.execute(f"CREATE TABLE IF NOT EXISTS {__tblname}(_id INTEGER AUTO_INCREMENT PRIMARY KEY, _privateKey VARCHAR(2000) NOT NULL, _publicKey VARCHAR(2000) NOT NULL,_email TEXT NOT NULL)")
+            cursor.execute(f"CREATE TABLE IF NOT EXISTS {__tblname}(_id INTEGER AUTO_INCREMENT PRIMARY KEY, _privateKey VARCHAR(2000) NOT NULL, _publicKey VARCHAR(2000) NOT NULL,_hash TEXT NOT NULL)")
             conn.commit()
     finally:
         conn.close()
-def insert(privatekey,publickey,email):
+def insert(privatekey,publickey,hash):
     conn= psql.connect(host='localhost',user='root',password='',database=__dbname)
     try:
         with conn.cursor() as cursor:
-            cursor.execute(f"INSERT INTO `rsakeys`(_privateKey,_publickey_email) VALUES(`{privatekey}`,`{publickey}`,`{email}`);")
+            cursor.execute(f"INSERT INTO `rsakeys`(_privateKey,_publickey_hash) VALUES(`{privatekey}`,`{publickey}`,`{hash}`);")
             conn.commit()
     finally:
         conn.close()
-def getKeys(email):
+def getKeys(hash):
     conn = psql.connect(host='localhost',user='root',password='',database=__dbname)
     try:
         with conn.cursor() as cursor:
-            cursor.execute(f"SELECT * FROM `rsakeys` WHERE _email = `{email}`")
+            cursor.execute(f"SELECT * FROM `rsakeys` WHERE _hash = `{hash}`")
             row = cursor.fetchone()
             return {"privatekey": row[1], "publickey" : row[2]}
     finally:
