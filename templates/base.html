@@ -38,7 +38,7 @@
 			overflow-x: hidden; /* Disable horizontal scroll */
 			overflow: hidden;
 			padding-top: 20px;
-			transition: 2s;
+			transition: 0.5s;
 		}
 
 		/* The navigation menu links */
@@ -119,11 +119,15 @@
 		#titleHeader .fas{
 			color : black;
 		}
+		#T{
+			height: 110px;
+		}
 	</style>
 	<script>
 		$(document).ready(function(){
+
 			var a = true;
-			console.log($(document).width())
+			console.log($("#T").width())
 			$('#side').click(function(){
 				if(a){
 					if($(document).width() < 1000){
