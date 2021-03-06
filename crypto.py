@@ -3,6 +3,8 @@ from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 from Crypto.Hash import SHA
 import base64 as b64,hashlib
+def __init__():
+    return
 def generate(keysize=2048) -> dict:
         key = RSA.generate(keysize)
         return {"public" : key.public_key().export_key().decode(), "private" : key.export_key().decode()}

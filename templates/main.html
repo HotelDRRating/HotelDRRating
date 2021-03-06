@@ -172,10 +172,7 @@ Following the structure, the rating investigates an inn's arrangements, programs
   </form>
   </div>
   </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> f9152ac1e1e8b1da05825dfd2e12f21272803f0d
 {% elif page_content=="framework" -%}
 <div id='titleHeader'>
     <h2 class='text-center' id='ssss'>Please be logged in to see the framework</h2>
@@ -300,7 +297,7 @@ Rated hotels
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
-					<form action="{{url_for('register',content='{{page_content}}')}}" method="post">
+					<form action="{{url_for('register',content=page_content)}}" method="post">
 						<label for="hotel">Hotel</label>
 						<input type="text" class="form-control" id="hotel" placeholder="Enter the name of your hotel" name="hotel">
 						<label for="fullname">Full Name</label>
@@ -329,14 +326,14 @@ Rated hotels
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <form action="{{url_for('login',content='{{page_content}}')}}" method="post"> 
+                    <form action="{{url_for('login',content=page_content)}}" method="post"> 
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Enter your email address" class="form-control">
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
                             <center><h5>Don't have an account yet? Click <a href="#" id="showLogin" data-toggle="modal" data-target="#registerModal" data-dismiss="modal">here</a> to create an account</h5></center>
                         </div>
                     </form>
