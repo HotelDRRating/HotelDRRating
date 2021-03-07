@@ -1,8 +1,6 @@
 import pymysql as psql
-import rsadb
-import crypto
 __dbname = "hotelDRRating"
-__tblname = "{__tblname}"
+__tblname = "hotelinfo"
 def create_db():
     conn=psql.connect(host='localhost',user='root',password='')
     try:
@@ -48,5 +46,25 @@ def is_verified(hash):
             cursor.execute(sql)
             row = cursor.fetchone()
             return row[6] == 1
+    finally:
+        conn.close()
+def get(hash):
+    conn = psql.connect(host='localhost',user='root',password='',database=__dbname)
+    try:
+        with conn.cursor() as cursor:
+            sql = f"SELECT * FROM {__tblname} WHERE _hash = '{hash}'"
+            cursor.execute(sql)
+            row = cursor.fetchone()
+
+            return {'hotel':row[1],'fullname':row[2],'email':row[3],'password':row[4],'hash':row[5]}
+    finally:
+        conn.close()
+def delete(hash):
+    conn = psql.connect(host='localhost',user='root',password='',database=__dbname)
+    try:
+        with conn.cursor() as cursor:
+            sql = f"DELETE FROM {__tblname} WHERE _hash = '{hash}'"
+            cursor.execute(sql)
+            conn.commit()
     finally:
         conn.close()
