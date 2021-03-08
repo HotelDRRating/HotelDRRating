@@ -52,7 +52,7 @@
 <div class="row" id="titleHeader">
     <div class="col">
         <h2><center>WHY GET YOUR HOTEL RATED?</center></h2>
-        <div class="carousel slide carousel-fade" id="rated" data-ride="carousel">
+        <div class="carousel slide" id="rated" data-ride="carousel">
     
             <div class="carousel-inner" role="listbox">
                 <center>
@@ -175,7 +175,7 @@ Following the structure, the rating investigates an inn's arrangements, programs
 
 {% elif page_content=="framework" -%}
 <div id='titleHeader'>
-    <h2 class='text-center' id='ssss'>Please be logged in to see the framework</h2>
+    <h2 class='text-center' id='ssss'>Work in PROGRESS</h2>
 </div>
 {% elif page_content=="partners" -%}
 <div class="row" id="titleHeader">
@@ -190,16 +190,8 @@ Following the structure, the rating investigates an inn's arrangements, programs
     </center>
 </div>
 {% elif page_content=="faq" -%}
-<<<<<<< HEAD
-<br>
-
-
-</br>
-<div id="titleHeader" >
-=======
 <br></br>
 <div id="titleHeader">
->>>>>>> 5c4ee8ca29213498f621795b2c3aee14100e9409
     <h2 class="text-center">FREQUENTLY ASKED QUESTIONS</h2>
     <table class="table table-bordered" id='tbl'>
         <tbody class = "content" >
@@ -222,7 +214,7 @@ Following the structure, the rating investigates an inn's arrangements, programs
             </tr>
             <tr>
                 <td id='quest'></td>
-                <td>  </td>
+                <td></td>
             </tr>
             <tr>
                 <td id='quest'></td>
@@ -285,9 +277,456 @@ Following the structure, the rating investigates an inn's arrangements, programs
     
 </div>
 {% elif page_content=="assessment" -%}
-Assessment
+<div class='form-group' id='titleHeader'>
+    <form action="/assessment?content=assessment">
+        <div class='border-primary'>
+            <div class='row'>
+                <h1>&nbsp;Hotel Profile</h1>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelName">Name of Hotel</label></div>
+                <div class='col-sm-10'><input  name="hotelName" type="text" placeholder="Name of hotel" class='form-control'> </div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelType">Type of Hotel</label></div>
+                <div class='col-sm-10'>
+                    <label><input type='radio' name='hotelType' value="Privately Owned" > Privately Owned</label>
+                    <label><input type='radio' name='hotelType' value="Privately Owned" > Corporate Owned</label>
+                    <label><input type='radio' name='hotelType' value="Privately Owned" > Foreign Corporation</label>
+                    <label><input type='radio' name='hotelType' value="Others" > Others </label>
+                </div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelRate">D.O.T Star Rating</label></div>
+                <div class='col-sm-10'>
+                    <label><input type='radio' name='hotelRate' value="0"> Unrated</label>
+                    <label><input type='radio' name='hotelRate' value="1"> 1 Star</label>
+                    <label><input type='radio' name='hotelRate' value="2"> 2 Stars</label>
+                    <label><input type='radio' name='hotelRate' value="3"> 3 Stars</label>
+                    <label><input type='radio' name='hotelRate' value="4"> 4 Stars</label>
+                    <label><input type='radio' name='hotelRate' value="5"> 5 Stars</label>
+                </div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelOwn">Hotel Owner / Corporate Entity</label></div>
+                <div class='col-sm-10' style="vertical-align:center;"><input type='text' name='hotelOwn' placeholder="Hotel Owner/Corporate Entity"  class='form-control'></div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelAff">Affiliation</label></div>
+                <div class='col-sm-10'>
+                    <label><input type='radio' name='hotelAff' value="H.R.A.P"> H.R.A.P</label>
+                    <label><input type='radio' name='hotelAff' value="D.O.T"> D.O.T</label>
+                    <label><input type='radio' name='hotelAff' value="P.H.O.A"> P.H.O.A</label>
+                    <label><input type='radio' name='hotelAff' value="Others"> Others</label>
+                </div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for='hotelYrs'>Years in Operation</label></div>
+                <div class='col-sm-10'>
+                    <label><input type='radio' name='hotelYrs' value="Less Than 1 Year"> Less Than 1 Year</label>
+                    <label><input type='radio' name='hotelYrs' value="1 to 5 Years"> 1 to 5 Years</label>
+                    <label><input type='radio' name='hotelYrs' value="6 to 10 Years"> 6 to 10 Years</label>
+                    <label><input type='radio' name='hotelYrs' value="11 to 20 Years"> 11 to 20 Years</label>
+                    <label><input type='radio' name='hotelYrs' value="More Than 21 Years"> More Than 21 Years</label>
+                </div>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h1>&nbsp;Contact Person</h1>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="assessorName">Person Doing Assessment</label></div>
+            <div class='col-sm-10'><input type='text' name='assessorName' placeholder="Person Doing Assessment" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="assessorDesig">Designation</label></div>
+            <div class='col-sm-10'><input type='text' name='assessorDesig' placeholder="Designation" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for='assessorContact'>Contact Number</label></div>
+            <div class='col-sm-10'><input type='text' name='assessorContact' placeholder="Contact Number" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="assessorEmail">E-Mail</label></div>
+            <div class='col-sm-10'><input type='email' name='assessorEmail' placeholder="E-Mail" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="assessmentDate">Date of Assessment</label></div>
+            <div class='col-sm-10'><input type='date' name='assessmentDate' placeholder="Date of Assessment" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h1>&nbsp;Risk Profiling</h1>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+           <h2 class=' bg-primary'>Geological Hazards</h2>        
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><h3 class='text-center'>Phenomenon</h3></div>
+            <div class='col-sm-4'><h3 class='text-center'>Likelihood</h3></div>
+            <div class='col-sm-4'><h3 class='text-center'>Impact</h3></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="earthquake">Earthquake</label></div>
+            <div class='col-sm-4' id='earthquake'>
+                <label><input type='radio' name='earthquakeLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='earthquakeLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='earthquakeLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='earthquakeLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='earthquakeLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='earthquake'>
+                <label><input type='radio' name='earthquakeImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='earthquakeImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='earthquakeImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='earthquakeImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='earthquakeImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="Liquefaction">Liquefaction</label></div>
+            <div class='col-sm-4' id='liquefaction'>
+                <label><input type='radio' name='liquefactionLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='liquefactionLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='liquefactionLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='liquefactionLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='liquefactionLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='liquefaction'>
+                <label><input type='radio' name='liquefactionImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='liquefactionImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='liquefactionImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='liquefactionImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='liquefactionImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="groundRupture">Ground Rupture</label></div>
+            <div class='col-sm-4' id='groundRupture'>
+                <label><input type='radio' name='groundRuptureLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='groundRuptureLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='groundRuptureLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='groundRuptureLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='groundRuptureLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='groundRupture'>
+                <label><input type='radio' name='groundRuptureImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='groundRuptureImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='groundRuptureImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='groundRuptureImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='groundRuptureImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="tsunami">Tsunami</label></div>
+            <div class='col-sm-4' id='tsunami'>
+                <label><input type='radio' name='tsunamiLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='tsunamiLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='tsunamiLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='tsunamiLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='tsunamiLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='tsunami'>
+                <label><input type='radio' name='tsunamiImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='tsunamiImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='tsunamiImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='tsunamiImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='tsunamiImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="volcanicHazard">Volcanic Hazards</label></div>
+            <div class='col-sm-4' id='volcanicHazard'>
+                <label><input type='radio' name='volcanicHazardLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='volcanicHazardLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='volcanicHazardLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='volcanicHazardLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='volcanicHazardLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='volcanicHazard'>
+                <label><input type='radio' name='volcanicHazardImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='volcanicHazardImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='volcanicHazardImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='volcanicHazardImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='volcanicHazardImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="landslide">Landslide</label></div>
+            <div class='col-sm-4' id='landslide'>
+                <label><input type='radio' name='landslideLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='landslideLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='landslideLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='landslideLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='landslideLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='landslide'>
+                <label><input type='radio' name='landslideImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='landslideImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='landslideImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='landslideImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='landslideImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h2 class=' bg-primary'>Hydrometeorological Hazards</h2>    
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="tropicalCyclone">Tropical Cyclone</label></div>
+            <div class='col-sm-4' id='tropicalCyclone'>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='tropicalCyclone'>
+                <label><input type='radio' name='tropicalCycloneImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='tropicalCycloneImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='tropicalCycloneImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='tropicalCycloneImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='tropicalCycloneImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="flood">Floods</label></div>
+            <div class='col-sm-4' id='flood'>
+                <label><input type='radio' name='floodLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='floodLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='floodLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='floodLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='floodLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='flood'>
+                <label><input type='radio' name='floodImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='floodImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='floodImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='floodImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='floodImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="stormSurge">Storm Surge</label></div>
+            <div class='col-sm-4' id='stormSurge'>
+                <label><input type='radio' name='stormSurgeLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='stormSurgeLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='stormSurgeLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='stormSurgeLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='stormSurgeLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='stormSurge'>
+                <label><input type='radio' name='stormSurgeImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='stormSurgeImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='stormSurgeImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='stormSurgeImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='stormSurgeImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="landslide">Storm Induced Landslide</label></div>
+            <div class='col-sm-4' id='landslide'>
+                <label><input type='radio' name='landslideLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='landslideLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='landslideLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='landslideLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='landslideLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='landslide'>
+                <label><input type='radio' name='landslideImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='landslideImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='landslideImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='landslideImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='landslideImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h2 class=' bg-primary'>Man-Made Hazards</h2>    
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="terrorism">Terrorism</label></div>
+            <div class='col-sm-4' id='terrorism'>
+                <label><input type='radio' name='terrorismLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='terrorismLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='terrorismLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='terrorismLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='terrorismLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='terrorism'>
+                <label><input type='radio' name='terrorismImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='terrorismImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='terrorismImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='terrorismImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='terrorismImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="civilDisturbance">Civil Disturbance</label></div>
+            <div class='col-sm-4' id='civilDisturbance'>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='civilDisturbance'>
+                <label><input type='radio' name='civilDisturbanceImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='civilDisturbanceImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='civilDisturbanceImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='civilDisturbanceImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='civilDisturbanceImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="cyberAttack">Cyber Attack</label></div>
+            <div class='col-sm-4' id='cyberAttack'>
+                <label><input type='radio' name='cyberAttackLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='cyberAttackLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='cyberAttackLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='cyberAttackLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='cyberAttackLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='cyberAttack'>
+                <label><input type='radio' name='cyberAttackImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='cyberAttackImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='cyberAttackImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='cyberAttackImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='cyberAttackImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="hazardMats">Hazardous Materials Exposure</label></div>
+            <div class='col-sm-4' id='hazardMats'>
+                <label><input type='radio' name='hazardMatsLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='hazardMatsLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='hazardMatsLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='hazardMatsLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='hazardMatsLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='hazardMats'>
+                <label><input type='radio' name='hazardMatsImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='hazardMatsImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='hazardMatsImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='hazardMatsImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='hazardMatsImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="chemSpill">Chemical Spills</label></div>
+            <div class='col-sm-4' id='chemSpill'>
+                <label><input type='radio' name='chemSpillLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='chemSpillLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='chemSpillLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='chemSpillLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='chemSpillLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='chemSpill'>
+                <label><input type='radio' name='chemSpillImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='chemSpillImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='chemSpillImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='chemSpillImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='chemSpillImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="oilSpill">Oil Spills</label></div>
+            <div class='col-sm-4' id='oilSpill'>
+                <label><input type='radio' name='oilSpillLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='oilSpillLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='oilSpillLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='oilSpillLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='oilSpillLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='oilSpill'>
+                <label><input type='radio' name='oilSpillImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='oilSpillImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='oilSpillImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='oilSpillImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='oilSpillImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="gasLeak">Gas Leak</label></div>
+            <div class='col-sm-4' id='gasLeak'>
+                <label><input type='radio' name='gasLeakLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='gasLeakLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='gasLeakLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='gasLeakLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='gasLeakLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='gasLeak'>
+                <label><input type='radio' name='gasLeakImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='gasLeakImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='gasLeakImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='gasLeakImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='gasLeakImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h1>&nbsp;Asset Inventory</h1>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for='art'>Painting / Sculptures / Artworks</label></div>
+            <div class='col-sm-10' id='art'>
+                <input type='number' placeholder='Enter the number of paintings in your hotel' name='paint' class='form-control'>
+                <input type='number' placeholder='Enter the number of sculptures in your hotel' name='sculp' class='form-control'>
+                <input type='number' placeholder='Enter the number of artworks in your hotel' name='artw' class='form-control'>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="building">Buildings</label></div>
+            <div class='col-sm-10'><input type="number" placeholder="Enter the number of buildings your hotel have" class='form-control' name='buildings'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="equipEng">Engineering Equipments</label></div>
+            <div class='col-sm-10'>
+                <input type="number" placeholder="Enter the number of generators your hotel have" class='form-control' name='generator'></div>
+                <input type='number' placeholder='Enter the number of tools your hotel have(e.g Pickaxe,Axe,Hammer,etc.)' class='form-control' name='tools'>
+                <input type='number' placeholder='Enter the number of testers your hotel have' class='form-control' name='testers'>
+            </div>
+            </div>
+    </form>
+</div>
 {% elif page_content=="rated_hotels" -%}
-Rated hotels
+<div id='titleHeader'>
+    <h2 class='text-center' id='ssss'>Work in PROGRESS</h2>
+</div>
 {% elif page_content=="news" -%}
 <div id='titleHeader'><iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>   </div>
 
@@ -352,23 +791,15 @@ Rated hotels
 </div>
 {% endblock %}
 {%block sidebar %}
-<a href="{{ url_for('home',content='home')}}"><i class="fas fa-home"></i> Home</a>
-<br><br>
-<a href="{{ url_for('home',content='about_us')}}" ><i class="fas fa-info btn"></i>About Us</a>
-<br><br>
-<a href="{{ url_for('home',content='contact_us')}}"><i class="fas fa-id-card-alt btn"></i> Contact Us</a>
-<br><br>
-<a href="{{ url_for('home',content='framework')}}"><i class="fas fa-cogs btn"></i> Framework</a>
-<br><br>
-<a href="{{ url_for('home',content='partners')}}"><i class="fas fa-handshake btn"></i> </i> Partners</a>
-<br><br>
-<a href="{{ url_for('home',content='news')}}"><i class="fas fa-newspaper btn"></i> News</a>
-<br><br>
-<a href="{{ url_for('home',content='assessment')}}"><i class="fas fa-check btn"></i> Assessment</a>
-<br><br>
-<a href="{{ url_for('home',content='rated_hotels')}}"><i class="fas fa-star btn"></i>Rated Hotels</a>
-<br><br>
-<a href="{{ url_for('home',content='faq')}}"><i class="fas fa-question btn"></i>FAQ</a>
+<a href="{{ url_for('home',content='home')}}" class='home'><i class="fas fa-home"></i></a>
+<a href="{{ url_for('home',content='about_us')}}" class='about'><i class="fas fa-info"></i></a>
+<a href="{{ url_for('home',content='contact_us')}}" class='contact'><i class="fas fa-id-card-alt"></i> </a>
+<a href="{{ url_for('home',content='framework')}}" class='framew'><i class="fas fa-cogs"></i> </a>
+<a href="{{ url_for('home',content='partners')}}" class='partners'><i class="fas fa-handshake"></i> </i> </a>
+<a href="{{ url_for('home',content='news')}}" class='news'><i class="fas fa-newspaper"></i> </a>
+<a href="{{ url_for('home',content='assessment')}}" class='assess'><i class="fas fa-check"></i> </a>
+<a href="{{ url_for('home',content='rated_hotels')}}" class='rated'><i class="fas fa-star"></i></a>
+<a href="{{ url_for('home',content='faq')}}" ><i class="fas fa-question"></i></a>
 
 
 
