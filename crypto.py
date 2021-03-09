@@ -9,13 +9,9 @@ def generate(keysize=2048) -> dict:
         key = RSA.generate(keysize)
         return {"public" : key.public_key().export_key().decode(), "private" : key.export_key().decode()}
 def encrypt(msg,pubkey) -> str:
-    publickey = RSA.importKey(pubkey)
-    cipher = PKCS1_v1_5.new(publickey)
-    return to_b64(cipher.encrypt(msg.encode('ascii')))
+    return b64.b64encode(PKCS1_v1_5.new(RSA.importKey(pubkey)).encrypt(msg.encode())).decode()
 def decrypt(msg,privkey) -> str:
-    privatekey = RSA.importKey(privkey)
-    cipher = PKCS1_v1_5.new(privatekey)
-    return cipher.decrypt(to_str(msg), Random.new().read(20+SHA.digest_size)).decode('utf-8')
+    return PKCS1_v1_5.new(RSA.importKey(privkey)).decrypt(b64.b64decode(msg), Random.new(20+SHA.digest_size)).decode()
 def hash(msg) -> str:#dual hash implementation for a much secure verification
     return hashlib.sha3_512(hashlib.sha256(msg.encode()).hexdigest().encode()).hexdigest()
 def to_b64(msg):

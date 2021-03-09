@@ -30,9 +30,9 @@ def send_appreciation_email(email:str):
         serv.login(sender_email,password)
         serv.sendmail(sender_email,email,message.as_string())
         serv.close()
-def send_register(email,otp):
+def send_register(email,fullname,hash):
     if '@' not in email:
-        raise Exception
+        raise ValueError("Please make sure your email address is a valid email address")
     s = []
     for x in list(email):
         if x == '@':
@@ -41,12 +41,13 @@ def send_register(email,otp):
             s.append(x)
     sss = "".join(s)
     message = MIMEMultipart('alternative')
-    message["Subject"] = "Ignore me"
+    message["Subject"] = "Thank you for registering"
     message["From"] = sender_email
     message["To"] = email
-    msg = MIMEText("""
-        <html>
-        <head>
+    msg = MIMEText(f"""
+        <!DOCTYPE html>
+<html lang="en">
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -54,10 +55,20 @@ def send_register(email,otp):
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        </head>
-        <body>
-        <a href="www.google.com">test</a>
-        </body>
+    
+    </head>
+    <body style="background-image: url('http://www.hoteldrrating.com/resources/images/full-body-bg2.jpg');width:1920px;height:1080px;">
+        <div class="container-fluid">
+            <h1 class="display-4">Thank you {fullname} for registering</h1>
+            <div class="row">
+                <p display="3">Click <a href="https://localhost:5000/verify?hash={hash}">Here</a> to verify your account</p>
+            </div>
+        </div>
+        <div class='row display-2'>
+            Regards, Disaster Resistance for Hotel Rating.
+        </div>
+    </body>
+</html>
                     """, 'html', 'utf-8')
     
     message.attach(msg)
@@ -67,4 +78,4 @@ def send_register(email,otp):
         serv.login(sender_email,password)
         serv.sendmail(sender_email,email,message.as_string())
         serv.close()
-send_register("aacabanas2@student.apc.edu.ph",696969)
+send_register("walalang985@gmail.com","TEST TEST","TESTHASH")

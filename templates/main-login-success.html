@@ -1,28 +1,147 @@
 {%extends 'base.html'%}
 {% block title %}
-The Disaster Resilience Rating For Hotels - Home
+{% if page_content=="home" -%}
+    <title>The Disaster Resilience Rating For Hotels - Home</title>
+{% elif page_content=="about_us" -%}
+    <title>The Disaster Resilience Rating For Hotels - About Us</title>
+{% elif page_content=="contact_us" -%}
+    <title>The Disaster Resilience Rating For Hotels - Contact Us</title>
+{% elif page_content=="framework" -%}
+    <title>The Disaster Resilience Rating For Hotels - Our Framework</title>
+{% elif page_content=="partners" -%}
+    <title>The Disaster Resilience Rating For Hotels - Partners</title>
+{% elif page_content=="faq" -%}
+    <title>The Disaster Resilience Rating For Hotels - FAQ</title>
+{% elif page_content=="news" -%}
+    <title>The Disaster Resilience Rating For Hotels - News</title>
+{% elif page_content=="rated_hotels" -%}
+    <title>The Disaster Resilience Rating For Hotels - Rated Hotels</title>
+{% endif -%}
 {% endblock %}
 {% block nav %}
 <ul class='navbar-nav ml-auto'>
     <li class='nav-item' id='nav-register' style='margin-right: 1em;'>
-        <a class="btn" href="#">Hello {{ session[""] }}</a>
+        <a class="btn" href="#">Hello {{ session["fullname"] }}</a>
     </li>
 </ul>
 {% endblock %}
 {% block content %}
 {% if page_content=="home" -%}
-
-{% elif page_content=="about_us" -%}
-
-{% elif page_content=="contact_us" -%}
-<h2 class="text-center">CONTACT US</h2>
-<div class="col-sm-5 ">
-    <p>Contact us and we'll get back to you within 24 hours.</p>
-    <br>
-    <p><span class="glyphicon glyphicon-map-marker"></span> Manila, Philippines</p>
-    <p><span class="glyphicon glyphicon-phone"></span> +63 9231230132</p>
-    <p><span class="glyphicon glyphicon-envelope"></span> info@hoteldrrating.com</p>
+<div class="row" id="titleHeader">
+  <div class="col">
+      <h1 style><center>WE LIVE IN A VUCA WORLD</center></h2>
+      <div class="row">
+          <p style = "color:black"><i class="fas fa-circle">&nbsp;</i>Where disasters are waiting around the corner.</p>
+      </div>
+      <div class="row">
+          <p style= "color:black"><i class="fas fa-circle">&nbsp;</i>We need to make sure our instituitions are resilient</p>
+      </div>
+      <div class="row">
+          <p style = "color:black"><i class="fas fa-circle">&nbsp;</i>And it begins with knowing where we stand? Is your hotel resilient? Click <a href="javascript:void(0)" data-toggle="modal" data-target="#framework-show">here</a> to see how our framework works</p>
+      </div>
   </div>
+<div class="row" id="titleHeader">
+  <div class="col">
+      <h2><center>WHY GET YOUR HOTEL RATED?</center></h2>
+      <div class="carousel slide" id="rated" data-ride="carousel">
+  
+          <div class="carousel-inner" role="listbox">
+              <center>
+              <div class="carousel-item active">
+                  <img src="{{ url_for('static',filename='images/assessment.jpg') }}" id="image" >
+                  <p style="color: black">To help you assess your resilience. Find out where you stand.</p>        
+              </div>
+              <div class="carousel-item">
+                  <img src="{{ url_for('static',filename='images/protect.jpg')}}" id="image">
+                  <p style="color: black">To help you protect your stakeholders. Because your success depends on them</p>
+              </div>
+              <div class="carousel-item">
+                  <img src="{{ url_for('static',filename='images/build.jpg')}}" id="image">
+                  <p style="color: black">To help build the industry Because when you are resilient, you help the industry become more resilient.</p>
+              </div>
+              <div class="carousel-item">
+                  <img src="{{ url_for('static',filename='images/future.jpg')}}" id="image">
+                  <p style="color: black">Because the country needs you to be resilient. The whole country benefits from you moving towards a more resilient future</p>
+              </div>
+              </center>
+          </div>
+          <ul class="carousel-indicators">
+              <li class="active" data-slide-to="0" data-target="#rated"></li>
+              <li data-slide-to="1" data-target="#rated"></li>
+              <li data-slide-to="2" data-target="#rated"></li>
+              <li data-slide-to="3" data-target="#rated"></li>
+          </ul>
+      </div>
+  </div>
+
+</div>
+
+<div class="row" id="titleHeader">
+  <div class="col">
+      <h2><center>The Process of Rating Hotels</center></h2>
+  </div>
+  
+</div>
+<div class="row" id="titleHeader">
+  <div class="col-sm">
+      <div class="card">
+          <div class="card-body"  id="T">
+              <h4 style="color:black" class="card-title">Step 1</h4>
+              <p style = "color:black" class="card-text">Self Assessment</p>
+          </div>
+      </div>
+  </div>
+  <div class='col-sm'>
+      <div class="card">
+          <div class="card-body"  id="T">
+              <h4 style="color:black" class="card-title">Step 2</h4>
+              <p style = "color:black" class="card-text">Third Party Resilience Audit</p>
+          </div>
+      </div>
+  </div>
+  <div class='col-sm'>
+      <div class="card">
+          <div class="card-body"  id="T">
+              <h4 style="color:black" class="card-title">Step 3</h4>
+              <p style = "color:black" class="card-text">Industry Association Validation and Approval</p>
+          </div>
+      </div>
+  </div>
+  <div class='col-sm'>
+  <div class="card">
+      <div class="card-body"  id="T">
+          <h4 style ="color:black" class="card-title">Step 4</h4>
+          <p style = "color:black" class="card-text">Publication of Rating</p>
+      </div>
+  </div>
+  </div>
+</div>
+</div>
+{% elif page_content=="about_us" -%}
+<div class="row" id="titleHeader">
+<div class="container-fluid individual-box" id="header">
+    <h2 class="text-center">ABOUT US</h1><br>
+</div>
+<p style = "color:black">This COVID-19 pandemic is a phenomenal occasion that has prompted gigantic joblessness and financial slumps everywhere on the world. The inn area, which is profoundly reliant on vacationers and explorers, has been seriously influenced. Since limitations are gradually being lifted and some similarity to regularity is starting to returned, what should lodging proprietors and the board do to win back visitors while additionally planning for the following worldwide calamity? How would hotels be able to deal with become more debacle strong? it explicitly intended to empower the facilities business to skip back better after each catastrophe. 
+
+How can it work? 
+
+The DRRH profits by the fundamental need of lodgings to elevate and showcase itself to forthcoming visitors. It considers lodgings to advertise their properties, offices and administrations from an alternate point of view — its capacity to ricochet back better from catastrophes and emergencies. 
+
+Following the structure, the rating investigates an inn's arrangements, programs, apparatuses, frameworks, and trainings that will permit it to forestall, relieve, plan for, and react to catastrophes.
+</p></div>
+{% elif page_content=="contact_us" -%}
+<div id='titleHeader'>
+<h2 class="text-center">CONTACT US</h2>
+<br>
+<div class="col-sm-5 " >
+    <p style = "color:black">Contact us and we'll get back to you within 24 hours.</p>
+    <br>
+    <p style = "color:black"><span class="glyphicon glyphicon-map-marker"></span> Manila, Philippines</p>
+    <p style = "color:black"><span class="glyphicon glyphicon-phone"></span> +63 9231230132</p>
+    <p style = "color:black"><span class="glyphicon glyphicon-envelope"></span> info@hoteldrrating.com</p>
+  </div>
+  <div class="form-group">
   <form id="frmContact" name="frmContact" method="post" action="">
     <div class="col-sm-7">
       <div class="row">
@@ -36,446 +155,600 @@ The Disaster Resilience Rating For Hotels - Home
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default" id="btnSend" name="btnSend" type="submit">Send</button>
+          <button class="bt" btn-default" id="btnSend" name="btnSend" type="submit">Send</button>
         </div>
       </div>
     </div>
   </form>
-{% elif page_content=="framework" -%}
-<br>
+  </div>
+  </div>
 
-</br>
-<div id="resilience" class="container-fluid text-center individual-box">
-  <div class="row text-center">
-    <h2>What we evaluate</h2>
-    <p>
-      To be resilient, you would need to have the following in place:<br>
-      Asset Protection and Risk Management, Continuity Management, Disaster Risk Reduction,
-      Opportunity and Crisis Management,
-      Resilience Communications
-    </p>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-12">
-      <img src="/resources/images/framework.png" class="img-thumbnail img-responsive">
-    </div>
-  </div>
-  
-  <br>
-  <h3><strong>Critical Areas for Review</strong></h3>
-  <br>
-  <div class="row text-center">
-    <div class="col-sm-6">
-      <div class="thumbnail">
-        <img src="/resources/images/policies.jpg" alt="policies" width="400" height="300" class="img-thumbnail img-responsive">
-        <p><strong>Policies</strong></p>
-        <p>Is resilience part of your operations? Do you have it in writing? Are there policies in place that guides your actions on resilience?</p>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="thumbnail">
-        <img src="/resources/images/programsplans.JPG" alt="Programs and Plans" width="400" height="300" class="img-thumbnail img-responsive">
-        <p><strong>Programs</strong></p>
-        <p>What are your activities to build resilience? Are they sustainable and integrated into your operations? </p>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="row text-center">
-    <div class="col-sm-6">
-      <div class="thumbnail">
-        <img src="/resources/images/systemtools.JPG" alt="Systems" width="400" height="300" class="img-thumbnail img-responsive">
-        <p><strong>Systems</strong></p>
-        <p>What processes are in place to ensure resilience? Are they best practices? Do they move your hotel to bounce back better?</p>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="thumbnail">
-        <img src="/resources/images/tools.JPG" alt="Tools" width="400" height="300" class="img-thumbnail img-responsive">
-        <p><strong>Tools</strong></p>
-        <p>What tools and resources are dedicated to resilience building? Are they enough?</p>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="row text-center">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
-      <div class="thumbnail">
-        <img src="/resources/images/training.jpg" alt="Trainings" width="400" height="300" class="img-thumbnail img-responsive">
-        <p><strong>Trainings</strong></p>
-        <p>What trainings undergone to ensure resilience? Do they improve your hotel to bounce back better?</p>
-      </div>
-    </div>
-    <div class="col-sm-3"></div>
-  </div>
-  <br><br>
-  <div class="row text-center">
-    <p>
-      Get your HOTEL rated today. It will benefit you, your guests, your employees and the community.
-    </p>
-    <p><a href="#contact" class="scrollsinators">Contact Us</a></p>
-  </div>
-  
+{% elif page_content=="framework" -%}
+<div id='titleHeader'>
+    <h2 class='text-center' id='ssss'>Work in PROGRESS</h2>
 </div>
 {% elif page_content=="partners" -%}
-{% elif page_content=="faq" -%}
-<br>
-
-
-</br>
-<div id="faq" class="container-fluid individual-box">
-  <h2 class="text-center">FREQUENTLY ASKED QUESTIONS</h2>
-  <div class="panel-group" id="accordion">
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q1">
-          <span class="glyphicon glyphicon-pushpin"></span> What is the Disaster Resilience Rating for Hotels?
-        </a> 
-      </div>
-      <div id="q1" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The DRRH is a thesis (capstone) project by a group of graduate students from the Asian Institute of Management (AIM), centered on co-creating a disaster resilience rating together with hotel industry associations/groups that will be shared publicly via Online Travel Agents (OTAs) and other media platforms as a way of gaining confidence from the general public. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q2">
-          <span class="glyphicon glyphicon-pushpin"></span> How will the rating measure the hotel's level of disaster resilience?
-        </a>
-      </div>
-      <div id="q2" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The DRRH follows the Resilience Programming Framework (RPF) created by Resilient.PH. The rating will evaluate the management practices — Asset Protection and Risk Management (APRM), Business Continuity Management (BCM), Disaster Risk Reduction (DRR), Emergency, Crisis and Opportunity Management (ECOM) and Risk/Crisis Communication (R/CCOMM) by reviewing existing policies, programs, systems, trainings, and tools (including finances) of hotels and assigning scores based on resilient level criteria - base (for local industry practices/compliance driven practices) mid (international best practice/above compliance) and high (for proven effective novel practices/thought leadership). <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q3">
-          <span class="glyphicon glyphicon-pushpin"></span> How will the hotel benefit from the rating?
-        </a>
-      </div>
-      <div id="q3" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i>  With the DRRH, hotels will be able to identify vulnerable components of their operations which they can work on to build their overall resilience.
-          </p> 
-          <p>
-            More importantly, the rating will show the hotel’s commitment to ensuring safety and wellbeing of guests and employees before, during, and after any hazard event which will add to the positive perception/image of the hotel.
-          </p>
-          <p>
-            The survey we conducted among hotel goers show that guests are likely to choose a hotel that they perceive to be resilient. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q4">
-          <span class="glyphicon glyphicon-pushpin"></span> How much will the rating cost?
-        </a>
-      </div>
-      <div id="q4" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The cost that will be charged to the hotel is the conduct of the third-party audit.
-          </p>
-          <p>
-            Initial estimates show that this may run anywhere between Php50 - 75K excluding travel and accommodation expenses for field audit. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q5">
-          <span class="glyphicon glyphicon-pushpin"></span> What is the process for getting a hotel rated?
-        </a>
-      </div>
-      <div id="q5" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> Subject to the directions of the hotel industry association, the DRRH may be available to both members and non-members.
-          </p>
-          <p>
-            Hotels who would like to get rated simply has to register via website or app (or via online forms). <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q6">
-          <span class="glyphicon glyphicon-pushpin"></span> What are the procedures in having a hotel rated?
-        </a>
-      </div>
-      <div id="q6" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> After registration, the hotel will be guided on the process of self-assessment, the natural starting point of the evaluation.
-          </p>
-          <p>
-            Once the self-assessment is completed and the documentary requirements have been submitted, a third party auditor will coordinate with the hotel for the actual field audit where evaluators will visit the hotel and validate the self-assessment.
-          </p>
-          <p>
-            The auditor will then submit the findings to the industry association who will serve as the final approver of the rating.
-          </p>
-          <p>
-            Once approved, the hotel will be allowed to use the rating in all its promotional activities. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q7">  
-          <span class="glyphicon glyphicon-pushpin"></span> What does the hotel need to provide/submit to be rated?
-        </a>
-      </div>
-      <div id="q7" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> As the critical areas for review includes policies, programs, systems, training, and tools (including finances), the rating will require hotels to show proof of the elements of the RPF in these areas. 
-          </p>
-          <p>  
-            Description of training programs for safety, company policy on disaster risk reduction, photos of health and safety features and resources, etc. are some of the examples of documents that will be asked of hotels undergoing the rating. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q8">
-          <span class="glyphicon glyphicon-pushpin"></span> What will the auditors/inspectors do when conducting the rating?
-        </a>
-      </div>
-      <div id="q8" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The third-party audit process has two components — the first part includes checking the completeness and validity of documents submitted by the hotel being audited. The self-assessment results will be reviewed following the criteria set by the DRRH. 
-          </p>
-          <p>
-            The second part involves field auditors visiting the hotel and validating the documents in the self-assessment through actual inspection, interview with employees and guests, interview with local government agencies and the community. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q9">
-          <span class="glyphicon glyphicon-pushpin"></span> Can the hotel suddenly back-out during the conduct of the rating? Will the payment be refunded?
-        </a>
-      </div>
-      <div id="q9" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The rating will only commence after payment of audit fees and completion of the self-assessment.
-          </p>
-          <p>
-            There is a time for completing the self-assessment as well as time period for the field audit and the final approval.
-          </p>
-          <p>
-            Should a hotel wish to discontinue the rating process, after the self-assessment, it will have to formally advise the industry association, but the fee will not be refunded when the field audit has been conducted. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q10">
-          <span class="glyphicon glyphicon-pushpin"></span> How long is the whole rating process?
-        </a>
-      </div>
-      <div id="q10" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The self-assessment is to be completed within one month. The first part of the third-party audit will begin as soon as the self-assessment has been submitted and will run for a maximum of one week.
-          </p>
-          <p>
-            The field audit will be done after the desk review has been completed and is expected to last anywhere between 3 to 5 days.  The findings of the third-party audit will be transmitted to the hotel industry association who will be given a maximum of two weeks to approve or reject the rating.
-          </p>
-          <p>
-            If there are no questions about the audit findings, the final approval will be communicated two weeks after submission of the third-party audit findings. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q11">
-          <span class="glyphicon glyphicon-pushpin"></span> What will happen after the field audit?
-        </a>
-      </div>
-      <div id="q11" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The findings of the third-party audit will be sent to the hotel industry association for final approval.
-          </p>
-          <p>
-            Once approved, the hotel industry association will send out a certificate of rating approval which the hotel can share with their respective OTAs as proof of authenticity of the rating.
-          </p>
-          <p>
-            The same certification can also be used by the hotel in all their promotion and marketing activities.
-          </p>
-          <p>
-            Hotels that will receive a High (RRR) rating will be awarded the certificate via a live public event at their venue of choice. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q12">
-          <span class="glyphicon glyphicon-pushpin"></span>Who will evaluate and approve the rating?
-        </a>
-      </div>
-      <div id="q12" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The self-assessment will have to be cleared and approved by the management of the hotel.
-          </p>
-          <p>
-            The third-party audit results that is based on the self-assessment will be evaluated by the hotel industry association who will also act as the final approving authority. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q13">  
-          <span class="glyphicon glyphicon-pushpin"></span> Who will publish the rating?
-        </a>
-      </div>
-      <div id="q13" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The hotel can share their industry approved rating with their partner OTAs as well as with their other media partners.
-          </p>
-          <p>
-            The hotel industry association will also maintain a list of all rated hotels in its website. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q14">
-          <span class="glyphicon glyphicon-pushpin"></span> Where will the rating of the hotel be published?
-        </a>
-      </div>
-      <div id="q14" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The hotel can choose where their approved rating will be published. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q15">
-          <span class="glyphicon glyphicon-pushpin"></span> How will the rating be published?
-        </a>
-      </div>
-      <div id="q15" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> OTAs can develop their own process for publishing the ratings as well as other media entities that hotel chooses to share their approved rating with.
-          </p>
-          <p>
-            But the industry will also maintain a section of their website (or an independent website) where all hotels rated will be featured. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q16">
-          <span class="glyphicon glyphicon-pushpin"></span> How long is the validity of the rating?
-        </a>
-      </div>
-      <div id="q16" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The rating will be valid for 1 year after the formal transmission of the certificate of rating approval from the industry association.
-          </p>
-          <p>
-            This is subject for change based on the auditing body. If there is any contest on the rating, the hotel industry (HRAP) will be the one to decide on the final rating. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q17">
-          <span class="glyphicon glyphicon-pushpin"></span> How often does a hotel need to be rated?
-        </a>
-      </div>
-      <div id="q17" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The DRRH will be conducted annually. 
-          </p>
-          <p>
-            But succeeding audits are expected to be completed within a shorter time frame as the hotel has already submitted substantial documentation. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default faq-header">
-      <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#q18">
-          <span class="glyphicon glyphicon-pushpin"></span> What will happen to the published rating if the hotel is suddenly affected by a disaster?
-        </a>
-      </div>
-      <div id="q18" class="panel-collapse collapse">
-        <div class="panel-body">
-          <p>
-          <i class="fa fa-quote-left" aria-hidden="true"></i> The DRRH is an evaluation of the existing resilience measures of a hotel.
-          </p>
-          <p>
-            Should a disaster hits, the industry association may decide to check whether these measures were used or not or whether these measures were effective or not.
-          </p>
-          <p>
-            The rating will not be changed until after the next audit review. <i class="fa fa-quote-right" aria-hidden="true"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
+<div class="row" id="titleHeader">
+<div class="container-fluid individual-box" id="header">
+    <h2 class="text-center">OUR PARTNERS</h1><br>
 </div>
+<div class="container-fluid individual-box" id = "body">
+   <center><p style="color:black">This is a list of our partners who helped us set the ratings on the hotels.</p>
+    <p style="color: black">Currently, we have no partners yet. Join us by clicking the button below!</p>
+
+    <a href="{{url_for('home',content='contact_us')}}"><button type="button" class="bt">Contact Us</button></a>
+    </center>
+</div>
+{% elif page_content=="faq" -%}
+<br></br>
+<div id="titleHeader">
+    <h2 class="text-center">FREQUENTLY ASKED QUESTIONS</h2>
+    <table class="table table-bordered" id='tbl'>
+        <tbody class = "content" >
+            <tr>
+                <td id='quest'><p style = "color:black">What is the Disaster Resilience Rating for Hotels?</td>
+                <td>The DRRH is a thesis (capstone) project by a group of graduate students from the Asian Institute of Management (AIM), centered on co-creating a disaster resilience rating together with hotel industry associations/groups that will be shared publicly via Online Travel Agents (OTAs) and other media platforms as a way of gaining confidence from the general public. </td>
+            </tr>
+            <tr>
+                <td id='quest'><p style = "color:black"></p>How will the rating measure the hotel's level of disaster resilience?</td>
+                <td> The DRRH follows the Resilience Programming Framework (RPF) created by Resilient.PH. The rating will evaluate the management practices — Asset Protection and Risk Management (APRM), Business Continuity Management (BCM), Disaster Risk Reduction (DRR), Emergency, Crisis and Opportunity Management (ECOM) and Risk/Crisis Communication (R/CCOMM) by reviewing existing policies, programs, systems, trainings, and tools (including finances) of hotels and assigning scores based on resilient level criteria - base (for local industry practices/compliance driven practices) mid (international best practice/above compliance) and high (for proven effective novel practices/thought leadership). </td>
+            </tr>
+            <tr>
+                <td id='quest'>
+                    How will the hotel benefit from the rating?</td>
+                <td>With the DRRH, hotels will be able to identify vulnerable components of their operations which they can work on to build their overall resilience.
+                    <br>
+                    More importantly, the rating will show the hotel’s commitment to ensuring safety and wellbeing of guests and employees before, during, and after any hazard event which will add to the positive perception/image of the hotel.
+                    <br>
+                    The survey we conducted among hotel goers show that guests are likely to choose a hotel that they perceive to be resilient.</td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id='quest'></td>
+                <td></td>
+            </tr></p>
+        </tbody>
+    </table>
+    
+</div>
+{% elif page_content=="assessment" -%}
+<div class='form-group' id='titleHeader'>
+    <form action="/assessment?content=assessment">
+        <div class='border-primary'>
+            <div class='row'>
+                <h1>&nbsp;Hotel Profile</h1>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelName">Name of Hotel</label></div>
+                <div class='col-sm-10'><input  name="hotelName" type="text" placeholder="Name of hotel" class='form-control'> </div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelType">Type of Hotel</label></div>
+                <div class='col-sm-10'>
+                    <label><input type='radio' name='hotelType' value="Privately Owned" > Privately Owned</label>
+                    <label><input type='radio' name='hotelType' value="Privately Owned" > Corporate Owned</label>
+                    <label><input type='radio' name='hotelType' value="Privately Owned" > Foreign Corporation</label>
+                    <label><input type='radio' name='hotelType' value="Others" > Others </label>
+                </div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelRate">D.O.T Star Rating</label></div>
+                <div class='col-sm-10'>
+                    <label><input type='radio' name='hotelRate' value="0"> Unrated</label>
+                    <label><input type='radio' name='hotelRate' value="1"> 1 Star</label>
+                    <label><input type='radio' name='hotelRate' value="2"> 2 Stars</label>
+                    <label><input type='radio' name='hotelRate' value="3"> 3 Stars</label>
+                    <label><input type='radio' name='hotelRate' value="4"> 4 Stars</label>
+                    <label><input type='radio' name='hotelRate' value="5"> 5 Stars</label>
+                </div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelOwn">Hotel Owner / Corporate Entity</label></div>
+                <div class='col-sm-10' style="vertical-align:center;"><input type='text' name='hotelOwn' placeholder="Hotel Owner/Corporate Entity"  class='form-control'></div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for="hotelAff">Affiliation</label></div>
+                <div class='col-sm-10'>
+                    <label><input type='radio' name='hotelAff' value="H.R.A.P"> H.R.A.P</label>
+                    <label><input type='radio' name='hotelAff' value="D.O.T"> D.O.T</label>
+                    <label><input type='radio' name='hotelAff' value="P.H.O.A"> P.H.O.A</label>
+                    <label><input type='radio' name='hotelAff' value="Others"> Others</label>
+                </div>
+            </div>
+            <hr class='my-3'>
+            <div class='row'>
+                <div class='col-sm-2'><label for='hotelYrs'>Years in Operation</label></div>
+                <div class='col-sm-10'>
+                    <label><input type='radio' name='hotelYrs' value="Less Than 1 Year"> Less Than 1 Year</label>
+                    <label><input type='radio' name='hotelYrs' value="1 to 5 Years"> 1 to 5 Years</label>
+                    <label><input type='radio' name='hotelYrs' value="6 to 10 Years"> 6 to 10 Years</label>
+                    <label><input type='radio' name='hotelYrs' value="11 to 20 Years"> 11 to 20 Years</label>
+                    <label><input type='radio' name='hotelYrs' value="More Than 21 Years"> More Than 21 Years</label>
+                </div>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h1>&nbsp;Contact Person</h1>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="assessorName">Person Doing Assessment</label></div>
+            <div class='col-sm-10'><input type='text' name='assessorName' placeholder="Person Doing Assessment" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="assessorDesig">Designation</label></div>
+            <div class='col-sm-10'><input type='text' name='assessorDesig' placeholder="Designation" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for='assessorContact'>Contact Number</label></div>
+            <div class='col-sm-10'><input type='text' name='assessorContact' placeholder="Contact Number" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="assessorEmail">E-Mail</label></div>
+            <div class='col-sm-10'><input type='email' name='assessorEmail' placeholder="E-Mail" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="assessmentDate">Date of Assessment</label></div>
+            <div class='col-sm-10'><input type='date' name='assessmentDate' placeholder="Date of Assessment" class='form-control'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h1>&nbsp;Risk Profiling</h1>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+           <h2 class=' bg-primary'>Geological Hazards</h2>        
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><h3 class='text-center'>Phenomenon</h3></div>
+            <div class='col-sm-4'><h3 class='text-center'>Likelihood</h3></div>
+            <div class='col-sm-4'><h3 class='text-center'>Impact</h3></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="earthquake">Earthquake</label></div>
+            <div class='col-sm-4' id='earthquake'>
+                <label><input type='radio' name='earthquakeLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='earthquakeLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='earthquakeLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='earthquakeLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='earthquakeLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='earthquake'>
+                <label><input type='radio' name='earthquakeImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='earthquakeImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='earthquakeImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='earthquakeImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='earthquakeImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="Liquefaction">Liquefaction</label></div>
+            <div class='col-sm-4' id='liquefaction'>
+                <label><input type='radio' name='liquefactionLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='liquefactionLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='liquefactionLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='liquefactionLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='liquefactionLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='liquefaction'>
+                <label><input type='radio' name='liquefactionImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='liquefactionImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='liquefactionImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='liquefactionImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='liquefactionImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="groundRupture">Ground Rupture</label></div>
+            <div class='col-sm-4' id='groundRupture'>
+                <label><input type='radio' name='groundRuptureLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='groundRuptureLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='groundRuptureLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='groundRuptureLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='groundRuptureLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='groundRupture'>
+                <label><input type='radio' name='groundRuptureImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='groundRuptureImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='groundRuptureImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='groundRuptureImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='groundRuptureImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="tsunami">Tsunami</label></div>
+            <div class='col-sm-4' id='tsunami'>
+                <label><input type='radio' name='tsunamiLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='tsunamiLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='tsunamiLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='tsunamiLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='tsunamiLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='tsunami'>
+                <label><input type='radio' name='tsunamiImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='tsunamiImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='tsunamiImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='tsunamiImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='tsunamiImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="volcanicHazard">Volcanic Hazards</label></div>
+            <div class='col-sm-4' id='volcanicHazard'>
+                <label><input type='radio' name='volcanicHazardLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='volcanicHazardLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='volcanicHazardLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='volcanicHazardLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='volcanicHazardLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='volcanicHazard'>
+                <label><input type='radio' name='volcanicHazardImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='volcanicHazardImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='volcanicHazardImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='volcanicHazardImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='volcanicHazardImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="landslide">Landslide</label></div>
+            <div class='col-sm-4' id='landslide'>
+                <label><input type='radio' name='landslideLikely' value='Rare' checked='checked'> Rare</label>
+                <label><input type='radio' name='landslideLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='landslideLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='landslideLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='landslideLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='landslide'>
+                <label><input type='radio' name='landslideImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='landslideImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='landslideImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='landslideImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='landslideImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h2 class=' bg-primary'>Hydrometeorological Hazards</h2>    
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="tropicalCyclone">Tropical Cyclone</label></div>
+            <div class='col-sm-4' id='tropicalCyclone'>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='tropicalCycloneLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='tropicalCyclone'>
+                <label><input type='radio' name='tropicalCycloneImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='tropicalCycloneImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='tropicalCycloneImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='tropicalCycloneImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='tropicalCycloneImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="flood">Floods</label></div>
+            <div class='col-sm-4' id='flood'>
+                <label><input type='radio' name='floodLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='floodLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='floodLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='floodLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='floodLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='flood'>
+                <label><input type='radio' name='floodImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='floodImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='floodImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='floodImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='floodImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="stormSurge">Storm Surge</label></div>
+            <div class='col-sm-4' id='stormSurge'>
+                <label><input type='radio' name='stormSurgeLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='stormSurgeLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='stormSurgeLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='stormSurgeLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='stormSurgeLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='stormSurge'>
+                <label><input type='radio' name='stormSurgeImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='stormSurgeImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='stormSurgeImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='stormSurgeImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='stormSurgeImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="landslide">Storm Induced Landslide</label></div>
+            <div class='col-sm-4' id='landslide'>
+                <label><input type='radio' name='landslideLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='landslideLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='landslideLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='landslideLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='landslideLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='landslide'>
+                <label><input type='radio' name='landslideImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='landslideImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='landslideImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='landslideImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='landslideImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h2 class=' bg-primary'>Man-Made Hazards</h2>    
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="terrorism">Terrorism</label></div>
+            <div class='col-sm-4' id='terrorism'>
+                <label><input type='radio' name='terrorismLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='terrorismLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='terrorismLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='terrorismLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='terrorismLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='terrorism'>
+                <label><input type='radio' name='terrorismImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='terrorismImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='terrorismImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='terrorismImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='terrorismImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="civilDisturbance">Civil Disturbance</label></div>
+            <div class='col-sm-4' id='civilDisturbance'>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='civilDisturbanceLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='civilDisturbance'>
+                <label><input type='radio' name='civilDisturbanceImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='civilDisturbanceImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='civilDisturbanceImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='civilDisturbanceImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='civilDisturbanceImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="cyberAttack">Cyber Attack</label></div>
+            <div class='col-sm-4' id='cyberAttack'>
+                <label><input type='radio' name='cyberAttackLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='cyberAttackLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='cyberAttackLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='cyberAttackLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='cyberAttackLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='cyberAttack'>
+                <label><input type='radio' name='cyberAttackImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='cyberAttackImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='cyberAttackImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='cyberAttackImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='cyberAttackImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="hazardMats">Hazardous Materials Exposure</label></div>
+            <div class='col-sm-4' id='hazardMats'>
+                <label><input type='radio' name='hazardMatsLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='hazardMatsLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='hazardMatsLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='hazardMatsLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='hazardMatsLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='hazardMats'>
+                <label><input type='radio' name='hazardMatsImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='hazardMatsImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='hazardMatsImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='hazardMatsImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='hazardMatsImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="chemSpill">Chemical Spills</label></div>
+            <div class='col-sm-4' id='chemSpill'>
+                <label><input type='radio' name='chemSpillLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='chemSpillLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='chemSpillLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='chemSpillLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='chemSpillLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='chemSpill'>
+                <label><input type='radio' name='chemSpillImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='chemSpillImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='chemSpillImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='chemSpillImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='chemSpillImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="oilSpill">Oil Spills</label></div>
+            <div class='col-sm-4' id='oilSpill'>
+                <label><input type='radio' name='oilSpillLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='oilSpillLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='oilSpillLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='oilSpillLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='oilSpillLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='oilSpill'>
+                <label><input type='radio' name='oilSpillImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='oilSpillImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='oilSpillImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='oilSpillImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='oilSpillImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-4'><label for="gasLeak">Gas Leak</label></div>
+            <div class='col-sm-4' id='gasLeak'>
+                <label><input type='radio' name='gasLeakLikely' value='Rare' Checked="Checked" > Rare</label>
+                <label><input type='radio' name='gasLeakLikely' value='Unlikely'> Unlikely</label>
+                <label><input type='radio' name='gasLeakLikely' value='Possible'> Possible</label><br>
+                <label><input type='radio' name='gasLeakLikely' value='Likely'> Likely</label>
+                <label><input type='radio' name='gasLeakLikely' value='Almost Certain'> Almost Certain</label>
+            </div>
+            <div class='col-sm-4' id='gasLeak'>
+                <label><input type='radio' name='gasLeakImpact' value="Negligible" checked='checked'> Negligible</label>
+                <label><input type='radio' name='gasLeakImpact' value='Minor'> Minor</label>
+                <label><input type='radio' name='gasLeakImpact' value='Moderate'> Moderate</label>
+                <label><input type='radio' name='gasLeakImpact' value='Significant'> Significant</label>
+                <label><input type='radio' name='gasLeakImpact' value='Severe'> Severe</label>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <h1>&nbsp;Asset Inventory</h1>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for='art'>Painting / Sculptures / Artworks</label></div>
+            <div class='col-sm-10' id='art'>
+                <input type='number' placeholder='Enter the number of paintings in your hotel' name='paint' class='form-control'>
+                <input type='number' placeholder='Enter the number of sculptures in your hotel' name='sculp' class='form-control'>
+                <input type='number' placeholder='Enter the number of artworks in your hotel' name='artw' class='form-control'>
+            </div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="building">Buildings</label></div>
+            <div class='col-sm-10'><input type="number" placeholder="Enter the number of buildings your hotel have" class='form-control' name='buildings'></div>
+        </div>
+        <hr class='my-3'>
+        <div class='row'>
+            <div class='col-sm-2'><label for="equipEng">Engineering Equipments</label></div>
+            <div class='col-sm-10'>
+                <input type="number" placeholder="Enter the number of generators your hotel have" class='form-control' name='generator'>
+                <input type='number' placeholder='Enter the number of tools your hotel have(e.g Pickaxe,Axe,Hammer,etc.)' class='form-control' name='tools'>
+                <input type='number' placeholder='Enter the number of testers your hotel have' class='form-control' name='testers'>
+                </div>
+            </div>  
+        <div class='row'>
+            <div class='col-sm-2'><label for="equipIT">I.T Equipments</label></div>
+            <div class='col-sm-10' id='equipIT'>
+                <input type='number' placeholder='Enter the number of Desktops your hotel have' class='form-control' name='desktop'>
+                <input type='number' placeholder='Enter the number of Laptops your hotel have' class='form-control' name='laptop'>
+                <input type='number' placeholder='Enter the number of Printers your hotel have' class='form-control' name='printer'>
+                <input type='number' placeholder='Enter the number of Network Switch your hotel have' class='form-control' name='switch'>
+                <input type='number' placeholder='Enter the number of Routers your hotel have' class='form-control' name='router'>
+            </div>
+        </div>
+    </form>
+</div>   
 {% elif page_content=="rated_hotels" -%}
+<div id='titleHeader'>
+    <h2 class='text-center' id='ssss'>Work in PROGRESS</h2>
+</div>
+{% elif page_content=="news" -%}
+<div id='titleHeader'><iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe></div>
+
 {% elif page_content=="profile" -%} 
 <div class='form-group'>
   <
 </div>
 {% else -%}
-    <h1 class="display-4">404 Content not found</h1>
+    <h1 class="display-4" id='titleHeader'>404 Content not found</h1>
 {% endif -%}
+{% endblock %}
+{%block sidebar %}
+<a href="{{ url_for('home',content='home')}}" class='home'><i class="fas fa-home"></i></a>
+<a href="{{ url_for('home',content='about_us')}}" class='about'><i class="fas fa-info"></i></a>
+<a href="{{ url_for('home',content='contact_us')}}" class='contact'><i class="fas fa-id-card-alt"></i> </a>
+<a href="{{ url_for('home',content='framework')}}" class='framew'><i class="fas fa-cogs"></i> </a>
+<a href="{{ url_for('home',content='partners')}}" class='partners'><i class="fas fa-handshake"></i> </i> </a>
+<a href="{{ url_for('home',content='news')}}" class='news'><i class="fas fa-newspaper"></i> </a>
+<a href="{{ url_for('home',content='assessment')}}" class='assess'><i class="fas fa-check"></i> </a>
+<a href="{{ url_for('home',content='rated_hotels')}}" class='rated'><i class="fas fa-star"></i></a>
+<a href="{{ url_for('home',content='faq')}}" ><i class="fas fa-question"></i></a>
+
+
+
 {% endblock %}
