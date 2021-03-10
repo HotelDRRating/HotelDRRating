@@ -1,9 +1,9 @@
 from flask import Flask,redirect,url_for,render_template,request,session
 from datetime import timedelta
-import crypto, hoteldb,rsadb,pymysql as psql
+import crypto,hoteldb,rsadb,pymysql as psql,response_send,bleach
 __dbname = "hotelDRRating"
 app = Flask(__name__)
-app.secret_key="b5c6c1c36670443727988e3edb14725f19b6233937f3ec9ff09f7b8185b92c7beda60d6b17de3b27c46a721834f5cbb1c5b0275c0743a893d9d9de026761cbd9"
+app.secret_key=crypto.hash("hotelDRRating")
 app.permanent_session_lifetime = timedelta(minutes=30)
 @app.route('/',methods=["GET","POST"])
 def index():
@@ -15,34 +15,40 @@ def index():
         conn.close()
     rsadb.create_table()
     hoteldb.create_table()
-    session["hotel"] = "b5c6c1c36670443727988e3edb14725f19b6233937f3ec9ff09f7b8185b92c7beda60d6b17de3b27c46a721834f5cbb1c5b0275c0743a893d9d9de026761cbd9"
     return redirect(url_for('home',content="home"))
 @app.route('/home',methods=["GET","POST"])
 def home():
     content = request.args.get('content')
-    return render_template('main.html',page_content=content),200
-@app.route('/home/success')
-def success():
-    page_content = request.args.get('page_content') 
-    return render_template('main-login-success.html',page_content=page_content)
-
+    session.modified = True
+    if 'fullname' in session and 'email' in session:
+        return render_template('main.html',page_content=content,user = session.get('fullname'), email = session.get('email'),hotel = session.get('hotel'), password = session.get('password'))
+    
+    return render_template('main.html',page_content=content,user=None)
 @app.route('/login', methods=['POST','GET'])
 def login():
-    #may possibly changed
     content = request.args.get('content')
     email = request.form.get('email')
     password = request.form.get('password')
+    if content is None and email is None and password is None:
+        return redirect(url_for('home',content='home'))
     hashed = crypto.hash(email+password)
     keys = rsadb.getKeys(hashed)
     private = keys["private"]
     info = hoteldb.get(hashed)
-    if email == crypto.decrypt(info["email"],private) and password == crypto.decrypt(info["password"]) and hashed == info["hash"]:
-        session["fullname"] = info["fullname"]
-        session['hotel'] = info["hotel"]
+    if email == crypto.decrypt(info["email"],private) and password == crypto.decrypt(info["password"],private) and hashed == info["hash"]:
+        session["email"] = crypto.decrypt(info["email"],private)
+        session["password"] = crypto.decrypt(info["password"],private)
+        session['hotel'] = crypto.decrypt(info["hotel"],private)
+        session['fullname'] = crypto.decrypt(info["fullname"],private)
         return redirect(url_for('home',content=content))
+@app.route('/contact', methods=["GET","POST"])
+def contact():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    response_send.send_appreciation_email(name, email)
+    return redirect(url_for('home',content='contact_us'))
 @app.route('/register', methods=['POST','GET'])
 def register():
-    #may possibly changed
     email = request.form.get('email')
     fullname = request.form.get('fullname')
     hotel= request.form.get('hotel')
@@ -51,17 +57,31 @@ def register():
     hashed = crypto.hash(email+password)
     keys = crypto.generate()
     rsadb.insert(keys['private'], keys['public'],hashed)
-    data = [crypto.encrypt(hotel,keys['public']),crypto.encrypt(fullname,keys['public']),crypto.encrypt(email,keys['public']),crypto.encrypt(password,keys['public']),crypto.hash(email+password)]
+    data = [crypto.encrypt(bleach.clean(hotel),keys['public']),crypto.encrypt(bleach.clean(fullname),keys['public']),crypto.encrypt(bleach.clean(email),keys['public']),crypto.encrypt(bleach.clean(password),keys['public']),crypto.hash(email+password)]
     hoteldb.insert(data[0],data[1],data[2],data[3],data[4])
+    response_send.send_register(email,fullname,hashed)
     return redirect(url_for('home',content=content))
 @app.route('/verify')
 def verify():
     hash = request.args.get('hash')
-    return str(hash)
+    if hash is None:
+        return redirect(url_for('home',content='home'))
+    hoteldb.verify(hash)
+    return redirect(url_for('home',content='home'))
 @app.route('/logout',methods=["GET","POST"])
 def logout():
     content = request.args.get('content')
     session.pop('email', None)
+    session.pop('fullname', None)
+    session.pop('hotel', None)
+    session.pop('password', None)
+
     return redirect(url_for('home',content=content))
+@app.route('/update', methods=["GET","POST"])
+def update():
+    return "<h1>Sorry But This part is still work in progress. Please come back at a later date</h1>"
+@app.route('/assessment' , methods=["GET","POST"])
+def assessment():
+    return "<h1>Sorry But This part is still work in progress. Please come back at a later date</h1>"
 if __name__ == '__main__':
     app.run(debug=True)

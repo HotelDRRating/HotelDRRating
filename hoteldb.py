@@ -22,23 +22,10 @@ def verify(hash):
     conn=psql.connect(host='localhost',user='root',password='',database=__dbname)
     try:        
         with conn.cursor() as cursor:
-            sql = f"SELECT * FROM hotelinfo WHERE _hash = '{hash}'"
+            sql = f"UPDATE hotelinfo SET(_verified = 1) WHERE _hash = '{hash}'"
             cursor.execute(sql)
-            row = cursor.fetchone()
-            if row[5] == hash:
-                sql = f"UPDATE hotelinfo SET(_verified = 1) WHERE _hash = '{hash}'"
-                cursor.execute(sql)
-                conn.commit()
-    finally:
-        conn.close()
-def is_verified(hash):
-    conn=psql.connect(host='localhost',user='root',password='',database=__dbname)
-    try:        
-        with conn.cursor() as cursor:
-            sql = f"SELECT * FROM hotelinfo WHERE _hash = '{hash}'"
-            cursor.execute(sql)
-            row = cursor.fetchone()
-            return row[6] == 1
+            conn.commit()
+                
     finally:
         conn.close()
 def get(hash):
@@ -49,7 +36,7 @@ def get(hash):
             cursor.execute(sql)
             row = cursor.fetchone()
 
-            return {'hotel':row[1],'fullname':row[2],'email':row[3],'password':row[4],'hash':row[5]}
+            return {'hotel':row[1],'fullname':row[2],'email':row[3],'password':row[4],'hash':row[5],'verified':row[6]}
     finally:
         conn.close()
 def delete(hash):
@@ -57,6 +44,15 @@ def delete(hash):
     try:
         with conn.cursor() as cursor:
             sql = f"DELETE FROM hotelinfo WHERE _hash = '{hash}'"
+            cursor.execute(sql)
+            conn.commit()
+    finally:
+        conn.close()
+def update(hash,hotel,email,password,fullname,newhash):
+    conn = psql.connect(host='localhost',user='root',password='',database=__dbname)
+    try:
+        with conn.cursor() as cursor:
+            sql=f"UPDATE hotelinfo SET(_hotel = '{hotel}', _fullname = '{fullname}', _email = '{email}', _password = '{password}', _hash = '{newhash}') WHERE _hash = '{hash}'"
             cursor.execute(sql)
             conn.commit()
     finally:

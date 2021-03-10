@@ -19,7 +19,9 @@
 {% endif -%}
 {%endblock%}
 {% block nav %}
+
 </ul>
+{% if user == None -%}
 <ul class='navbar-nav ml-auto'>
     <li class='nav-item' id='nav-register' style='margin-right: 1em;'>
         <a class="btn" id="register-modal" data-toggle="modal" data-target="#registerModal" href="#">Register</a>
@@ -30,7 +32,22 @@
         </a>
     </li>
 </ul>
+{% else -%}
+<ul class='navbar-nav ml-auto'>
+    <li class='nav-item'>
+        <div class="dropdown">
+            <a type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                Hello {{user}}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{{url_for('home',content='profile')}}">Profile</a>
+              <a class="dropdown-item" href="{{url_for('logout',content=page_content)}}">Logout</a>
+            </div>
+          </div>
 
+    </li>
+</ul>
+{% endif -%}
 </nav>
 {% endblock %}
 {% block content %}
@@ -156,16 +173,21 @@ Following the structure, the rating investigates an inn's arrangements, programs
     <div class="col-sm-7">
       <div class="row">
         <div class="col-sm-6 form-group">
+            {% if user == None-%}
           <input class="form-control" id="con_name" name="con_name" placeholder="Name" type="text" required="">
+            {% else -%}
+            <input class="form-control" id="con_name" name="con_name" placeholder="Name" type="text" required="" value="{{ user }}" readonly="readonly">
+            {% endif -%}
         </div>
         <div class="col-sm-6 form-group">
           <input class="form-control" id="con_email" name="con_email" placeholder="Email" type="email" required="">
-        </div>
+            
+        </div>  
       </div>
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="bt" btn-default" id="btnSend" name="btnSend" type="submit">Send</button>
+          <button class="btn btn-default" id="btnSend" name="btnSend" type="submit">Send</button>
         </div>
       </div>
     </div>
@@ -175,7 +197,69 @@ Following the structure, the rating investigates an inn's arrangements, programs
 
 {% elif page_content=="framework" -%}
 <div id='titleHeader'>
-    <h2 class='text-center' id='ssss'>Work in PROGRESS</h2>
+    <h1 class='text-center'>What We Evaluate</h1>
+        <p class='text-center'>To be resilient, you would need to have the following in place:<br>
+Asset Protection and Risk Management, Continuity Management, Disaster Risk Reduction, Opportunity and Crisis Management, Resilience Communications</p>
+<img src='static/images/framework.png' class='img-thumbnail'>
+<div class='carousel slide' id='carousel'  data-ride="carousel">
+    <ul class='carousel-indicators'>
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+        <li data-target="#carousel" data-slide-to="3"></li>
+        <li data-target="#carousel" data-slide-to="4"></li>
+    </ul>
+    <div class='carousel-inner' role='listbox'>
+        <div class='carousel-item active'>
+            <img src='static/images/policies.jpg' class='img-thumbnail'>
+            <div class="carousel-caption">
+                <h3 class='text-center' style='background-color:rgba(0,0,0,0.5);'>Policies</h3>
+                <p style='background-color:rgba(0,0,0,0.5);'>
+                    Is resilience part of your operations? Do you have it in writing? Are there policies in place that guides your actions on resilience?
+                </p>
+            </div>
+        </div>
+        <div class='carousel-item'>
+            <img src='static/images/programsplans.jpg' class='img-thumbnail'>
+            <div class="carousel-caption">
+                <h3 class='text-center' style='background-color:rgba(0,0,0,0.5);'>Programs</h3>
+                <p style='background-color:rgba(0,0,0,0.5);'>
+                    What are your activities to build resilience? Are they sustainable and integrated into your operations?
+                </p>
+            </div>
+        </div>    
+        <div class='carousel-item'>
+            <img src='static/images/systemtools.jpg' class='img-thumbnail'>
+            <div class="carousel-caption">
+                <h3 class='text-center' style='background-color:rgba(0,0,0,0.5);'>Systems</h3>
+                <p style='background-color:rgba(0,0,0,0.5);'>
+                    What processes are in place to ensure resilience? Are they best practices? Do they move your hotel to bounce back better?
+                </p>
+            </div>
+        </div>    
+        <div class='carousel-item'>
+            <img src='static/images/programsplans.jpg' class='img-thumbnail'>
+            <div class="carousel-caption">
+                <h3 class='text-center' style='background-color:rgba(0,0,0,0.5);'>Tools</h3>
+                <p style='background-color:rgba(0,0,0,0.5);'>
+                    What tools and resources are dedicated to resilience building? Are they enough?
+                </p>
+            </div>
+        </div>    
+        <div class='carousel-item'>
+            <img src='static/images/programsplans.jpg' class='img-thumbnail'>
+            <div class="carousel-caption">
+                <h3 class='text-center' style='background-color:rgba(0,0,0,0.5);'>Training</h3>
+                <p style='background-color:rgba(0,0,0,0.5);'>
+                    What trainings undergone to ensure resilience? Do they improve your hotel to bounce back better?
+                </p>
+            </div>
+        </div>            
+    </div>
+</div>
+    
+        
+</div>
 </div>
 {% elif page_content=="partners" -%}
 <div class="row" id="titleHeader">
@@ -277,17 +361,20 @@ Following the structure, the rating investigates an inn's arrangements, programs
     
 </div>
 {% elif page_content=="assessment" -%}
-
+{% if user == None-%}
+<h1 id='titleHeader'>Please Login First</h1>
+{% else -%}
 <div class='form-group' id='titleHeader'>
-    <form action="/assessment?content=assessment">
+    <form action="/assessment?content=assessment" method='post'>
         <div class='border-primary'>
+            <input type='hidden' name='emailused' value="{{email}}">
             <div class='row'>
                 <h1>&nbsp;Hotel Profile</h1>
             </div>
             <hr class='my-3'>
             <div class='row'>
                 <div class='col-sm-2'><label for="hotelName">Name of Hotel</label></div>
-                <div class='col-sm-10'><input  name="hotelName" type="text" placeholder="Name of hotel" class='form-control'> </div>
+                <div class='col-sm-10'><input  name="hotelName" type="text" placeholder="Name of hotel" class='form-control' value="{{hotel}}" readonly="readonly"> </div>
             </div>
             <hr class='my-3'>
             <div class='row'>
@@ -887,18 +974,42 @@ Following the structure, the rating investigates an inn's arrangements, programs
     </div>
     </form>
 </div> 
+{% endif -%}
 
 {% elif page_content=="rated_hotels" -%}
 <div id='titleHeader'>
-    <h2 class='text-center' id='ssss'>Work in PROGRESS</h2>
+    <h2 class='text-center' id='ssss'>Unfortunately the assessment page is still work in progress so we could not put any content here.</h2>
 </div>
 {% elif page_content=="news" -%}
 <div id='titleHeader'><iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe></div>
+{% elif page_content=="profile"-%}
+{% if user==None -%}
+<script>
+    window.location = "{{url_for('home',content='home')}}"
+</script>
+{% else-%}
+<div id='titleHeader'>
+    <form method="post" action="{{url_for('update')}}">
+        <input type="hidden" name="oldemail" value="{{ user }}">
+        <input type="hidden" name="oldpass" value="{{ password }}">
+        <label for="hotel">Hotel</label>
+        <input type='text' name='hotel' value="{{ hotel }}" id='hotel' class='form-control'>
+        <label for="fname">Full Name</label>
+        <input type='text' name='fullname' value="{{user}}" id='fname' class='form-control'>
+        <label for="email">Email</label>
+        <input type="email" value="{{email}}" id='email' name='email' class='form-control'>
+        <label for="password">Password</label>
+        <input type='password' value="{{password}}" id='pw' name='password' class='form-control'>
+        <button type="submit" class='btn btn-primary' style='margin-left: 39.5em;'>Save</button>
 
+    </form>
+</div>
+{% endif -%}
 {% else -%}
     <h1 class="display-4" id='titleHeader'>404 Content not found</h1>
 {% endif -%}
 {% endblock %}
+{% if user == None -%}
 {% block modals %}
 <div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="ModalRegister" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
@@ -955,16 +1066,18 @@ Following the structure, the rating investigates an inn's arrangements, programs
 	</div>
 </div>
 {% endblock %}
+{%else -%}
+{%endif -%}
 {%block sidebar %}
-<a href="{{ url_for('home',content='home')}}" class='home'><i class="fas fa-home"></i></a>
-<a href="{{ url_for('home',content='about_us')}}" class='about'><i class="fas fa-info"></i></a>
-<a href="{{ url_for('home',content='contact_us')}}" class='contact'><i class="fas fa-id-card-alt"></i> </a>
-<a href="{{ url_for('home',content='framework')}}" class='framew'><i class="fas fa-cogs"></i> </a>
-<a href="{{ url_for('home',content='partners')}}" class='partners'><i class="fas fa-handshake"></i> </i> </a>
-<a href="{{ url_for('home',content='news')}}" class='news'><i class="fas fa-newspaper"></i> </a>
-<a href="{{ url_for('home',content='assessment')}}" class='assess'><i class="fas fa-check"></i> </a>
-<a href="{{ url_for('home',content='rated_hotels')}}" class='rated'><i class="fas fa-star"></i></a>
-<a href="{{ url_for('home',content='faq')}}" ><i class="fas fa-question"></i></a>
+<a href="{{ url_for('home',content='home')}}" class='home'><i class="fas fa-home"></i> Home</a>
+<a href="{{ url_for('home',content='about_us')}}" class='about'><i class="fas fa-info"></i> About Us</a>
+<a href="{{ url_for('home',content='contact_us')}}" class='contact'><i class="fas fa-id-card-alt"></i> Contact Us</a>
+<a href="{{ url_for('home',content='framework')}}" class='framew'><i class="fas fa-cogs"></i> Our Framework</a>
+<a href="{{ url_for('home',content='partners')}}" class='partners'><i class="fas fa-handshake"></i> </i> Partners</a>
+<a href="{{ url_for('home',content='news')}}" class='news'><i class="fas fa-newspaper"></i> News</a>
+<a href="{{ url_for('home',content='assessment')}}" class='assess'><i class="fas fa-check"></i> Assessment</a>
+<a href="{{ url_for('home',content='rated_hotels')}}" class='rated'><i class="fas fa-star"></i> Rated Hotels</a>
+<a href="{{ url_for('home',content='faq')}}" ><i class="fas fa-question"></i> FAQ</a>
 
 
 

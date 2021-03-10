@@ -21,7 +21,7 @@ def getKeys(hash):
     conn = psql.connect(host='localhost',user='root',password='',database=__dbname)
     try:
         with conn.cursor() as cursor:
-            cursor.execute(f"SELECT * FROM `rsakeys` WHERE _hash = `{hash}`")
+            cursor.execute(f"SELECT * FROM rsakeys WHERE _hash = '{hash}'")
             row = cursor.fetchone()
             return {"private": row[1], "public" : row[2]}
     finally:

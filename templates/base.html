@@ -159,12 +159,13 @@
 				
 			})
 			$('input[name="assessmentDate"]').val(curday('-'))
+			$(".carousel").carousel({interval=1500})
 			
 		})
 			
 	</script>
 	<body>
-		
+	<div id='top' style='display: none;'></div>
 	<nav class="navbar navbar-expand-sm sticky-top" id="nav">
 		<div class="sidenav ">
 			
@@ -207,11 +208,14 @@
 			</div>
 		</div>
 		
-		
-		
-		<!--
-			MODALS
-		-->
+		<footer class='footer'>
+			<div class='container'>
+				<div class='row'>
+					<a href="#">Go to top</a>
+				</div>
+			</div>
+		</footer>
+	
 		
 </body>
 {% block modals %}
