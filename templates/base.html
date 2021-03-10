@@ -29,7 +29,7 @@
 		/* The sidebar menu */
 		.sidenav {
 			height: 900px; /* Full-height: remove this if you want "auto" height */
-			width: 0px; /* Set the width of the sidebar */
+			width: 200px; /* Set the width of the sidebar */
 			position: fixed; /* Fixed Sidebar (stay in place on scroll) */
 			z-index: 3; /* Stay on top */
 			top: 50; /* Stay at the top */
@@ -165,19 +165,21 @@
 			
 	</script>
 	<body>
-	<div id='top' style='display: none;'></div>
 	<nav class="navbar navbar-expand-sm sticky-top" id="nav">
 		<div class="sidenav ">
 			
-			{%block sidebar%}
-			{%endblock %}
-			
+			<a href="{{ url_for('home',content='home')}}" class='home'><i class="fas fa-home"></i> Home</a>
+			<a href="{{ url_for('home',content='about_us')}}" class='about'><i class="fas fa-info"></i> About Us</a>
+			<a href="{{ url_for('home',content='contact_us')}}" class='contact'><i class="fas fa-id-card-alt"></i> Contact Us</a>
+			<a href="{{ url_for('home',content='framework')}}" class='framew'><i class="fas fa-cogs"></i> Our Framework</a>
+			<a href="{{ url_for('home',content='partners')}}" class='partners'><i class="fas fa-handshake"></i> </i> Partners</a>
+			<a href="{{ url_for('home',content='news')}}" class='news'><i class="fas fa-newspaper"></i> News</a>
+			<a href="{{ url_for('home',content='assessment')}}" class='assess'><i class="fas fa-check"></i> Assessment</a>
+			<a href="{{ url_for('home',content='rated_hotels')}}" class='rated'><i class="fas fa-star"></i> Rated Hotels</a>
+			<a href="{{ url_for('home',content='faq')}}" ><i class="fas fa-question"></i> FAQ</a>
+						
 		</div>
-		<ul class='navbar-nav '>
-			<li class="nav-item">
-				<a href='javascript:void(0)' class='btn' id='side'><i class="fas fa-bars" id='fas'></i></a>
-			</li>
-		</ul>
+		
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				{% block home %}
@@ -208,13 +210,9 @@
 			</div>
 		</div>
 		
-		<footer class='footer'>
-			<div class='container'>
-				<div class='row'>
-					<a href="#">Go to top</a>
-				</div>
-			</div>
-		</footer>
+
+			<center><a href="#" class="btn" style='font-size:40px;'><i class="fas fa-arrow-up"></i></a></center>
+
 	
 		
 </body>
